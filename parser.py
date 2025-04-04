@@ -7,7 +7,7 @@ tokens = (
     'PLUS', 'MINUS',
     'TIMES', 'DIVIDE',
     'LPAREN', 'RPAREN',
-    'PRINT', 'STR', 'CHAR'
+    'PRINT', 'STR', 'CHAR', 'DATATYPE'
 )
 
 t_PLUS    = r'\+'
@@ -36,6 +36,9 @@ def t_CHAR(t):
     r"\'[^']*\'"
     return t
 
+def t_DATATYPE(t):
+    r'Int|Float|_|List'
+    return t
 
 # Parser
 precedence = (
@@ -50,7 +53,6 @@ def p_expression(p):
                | expression MINUS expression
                | expression TIMES expression
                | expression DIVIDE expression
-
     '''
     if p[2] == '+': 
         p[0] = p[1] + p[3]
@@ -81,7 +83,30 @@ def p_expression_char(p):
     'expression : CHAR'
     p[0] = p[1]
 
-def p_datatype(p):
+
+# Update operator rules to handle type coercion
+def p_expression(p):
+    '''
+    expression : expression PLUS expression
+               | expression MINUS expression
+               | expression TIMES expression
+               | expression DIVIDE expression
+    '''
+    if isinstance(p[1], (int, float)) and isinstance(p[3], (int, float)):
+        # Numeric operation
+        if p[2] == '+': 
+            p[0] = p[1] + p[3]
+        elif p[2] == '-': 
+            p[0] = p[1] - p[3]
+        elif p[2] == '*':
+            p[0] = p[1] * p[3]
+        elif p[2] == '/': 
+            p[0] = p[1] / p[3]
+    else:
+        # Handle mixed types (string + number)
+        if isinstance(p[1], str) or isinstance(p[3], str):
+            raise TypeError("Cannot mix strings with numbers without explicit type conversion")
+
     '''
     datatype : DATATYPE expression
     '''
@@ -94,7 +119,6 @@ def p_print(p):
     '''expression : PRINT STR
                   | PRINT CHAR
                   | PRINT NUMBER
-                  | PRINT expression
     '''
     if p.slice[2].type == 'STR':  # Check token type instead of content
         print(p[2][1:-1])
@@ -102,8 +126,7 @@ def p_print(p):
         print(p[2][1])
     elif p.slice[2].type == 'NUMBER':
         print(p[2])
-    elif p.slice[2].type == 'expression':
-        print(p[2])
+   
     
 
 lexer = lex.lex()
@@ -113,9 +136,10 @@ parser = yacc.yacc()
 def calculate(expression):
     return parser.parse(expression)
 
+# Example usage
 if __name__ == '__main__':
     test_cases = [
-        ">> '1' + 3"
+        ">> \"HELLO WORLD\""
     ]
     
     for expr in test_cases:
