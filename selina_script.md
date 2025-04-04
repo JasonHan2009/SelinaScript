@@ -2,6 +2,5 @@
 
 SelinaScript Lang is a front end programming language, the main idea is everything are the math to improve logicality,and this language provide a really simple syntax 
 
-SelinaScript will compile to C, then translate to WASM code 
+SelinaScript will compile to WASM code
 
-In this Language, only has 3 datatypes
