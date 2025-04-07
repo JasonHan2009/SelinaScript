@@ -1,0 +1,2097 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    LIST
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> LPAREN expression RPAREN
+Rule 2     expression -> expression PLUS expression
+Rule 3     expression -> expression MINUS expression
+Rule 4     expression -> expression TIMES expression
+Rule 5     expression -> expression DIVIDE expression
+Rule 6     expression -> MINUS expression
+Rule 7     expression -> NUMBER
+Rule 8     string -> STR
+Rule 9     expression -> string
+Rule 10    char -> CHAR
+Rule 11    expression -> char
+Rule 12    int -> INT
+Rule 13    float -> FLOAT
+Rule 14    empty -> _
+Rule 15    expression -> INT expression
+Rule 16    expression -> FLOAT expression
+Rule 17    expression -> PRINT expression
+Rule 18    expression -> INT string PLUS string
+Rule 19    expression -> INT string MINUS string
+Rule 20    expression -> INT string TIMES string
+Rule 21    expression -> INT string DIVIDE string
+Rule 22    expression -> float string PLUS string
+Rule 23    expression -> float string MINUS string
+Rule 24    expression -> float string TIMES string
+Rule 25    expression -> float string DIVIDE string
+Rule 26    expression -> float char PLUS char
+Rule 27    expression -> float char MINUS char
+Rule 28    expression -> float char TIMES char
+Rule 29    expression -> float char DIVIDE char
+Rule 30    expression -> int char PLUS char
+Rule 31    expression -> int char MINUS char
+Rule 32    expression -> int char TIMES char
+Rule 33    expression -> int char DIVIDE char
+Rule 34    expression -> INT STR PLUS STR
+Rule 35    expression -> INT STR MINUS STR
+Rule 36    expression -> INT STR TIMES STR
+Rule 37    expression -> INT STR DIVIDE STR
+Rule 38    expression -> INT CHAR PLUS CHAR
+Rule 39    expression -> INT CHAR MINUS CHAR
+Rule 40    expression -> INT CHAR TIMES CHAR
+Rule 41    expression -> INT CHAR DIVIDE CHAR
+Rule 42    expression -> FLOAT STR PLUS STR
+Rule 43    expression -> FLOAT STR MINUS STR
+Rule 44    expression -> FLOAT STR TIMES STR
+Rule 45    expression -> FLOAT STR DIVIDE STR
+Rule 46    expression -> FLOAT CHAR PLUS CHAR
+Rule 47    expression -> FLOAT CHAR MINUS CHAR
+Rule 48    expression -> FLOAT CHAR TIMES CHAR
+Rule 49    expression -> FLOAT CHAR DIVIDE CHAR
+Rule 50    expression -> empty expression
+
+Terminals, with rules where they appear
+
+CHAR                 : 10 38 38 39 39 40 40 41 41 46 46 47 47 48 48 49 49
+DIVIDE               : 5 21 25 29 33 37 41 45 49
+FLOAT                : 13 16 42 43 44 45 46 47 48 49
+INT                  : 12 15 18 19 20 21 34 35 36 37 38 39 40 41
+LIST                 : 
+LPAREN               : 1
+MINUS                : 3 6 19 23 27 31 35 39 43 47
+NUMBER               : 7
+PLUS                 : 2 18 22 26 30 34 38 42 46
+PRINT                : 17
+RPAREN               : 1
+STR                  : 8 34 34 35 35 36 36 37 37 42 42 43 43 44 44 45 45
+TIMES                : 4 20 24 28 32 36 40 44 48
+_                    : 14
+error                : 
+
+Nonterminals, with rules where they appear
+
+char                 : 11 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33
+empty                : 50
+expression           : 1 2 2 3 3 4 4 5 5 6 15 16 17 50 0
+float                : 22 23 24 25 26 27 28 29
+int                  : 30 31 32 33
+string               : 9 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 1
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 1
+
+    (0) S' -> expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+
+state 2
+
+    (1) expression -> LPAREN . expression RPAREN
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 20
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 3
+
+    (6) expression -> MINUS . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 21
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 4
+
+    (7) expression -> NUMBER .
+
+    PLUS            reduce using rule 7 (expression -> NUMBER .)
+    MINUS           reduce using rule 7 (expression -> NUMBER .)
+    TIMES           reduce using rule 7 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 7 (expression -> NUMBER .)
+    $end            reduce using rule 7 (expression -> NUMBER .)
+    RPAREN          reduce using rule 7 (expression -> NUMBER .)
+
+
+state 5
+
+    (9) expression -> string .
+
+    PLUS            reduce using rule 9 (expression -> string .)
+    MINUS           reduce using rule 9 (expression -> string .)
+    TIMES           reduce using rule 9 (expression -> string .)
+    DIVIDE          reduce using rule 9 (expression -> string .)
+    $end            reduce using rule 9 (expression -> string .)
+    RPAREN          reduce using rule 9 (expression -> string .)
+
+
+state 6
+
+    (11) expression -> char .
+
+    PLUS            reduce using rule 11 (expression -> char .)
+    MINUS           reduce using rule 11 (expression -> char .)
+    TIMES           reduce using rule 11 (expression -> char .)
+    DIVIDE          reduce using rule 11 (expression -> char .)
+    $end            reduce using rule 11 (expression -> char .)
+    RPAREN          reduce using rule 11 (expression -> char .)
+
+
+state 7
+
+    (15) expression -> INT . expression
+    (18) expression -> INT . string PLUS string
+    (19) expression -> INT . string MINUS string
+    (20) expression -> INT . string TIMES string
+    (21) expression -> INT . string DIVIDE string
+    (34) expression -> INT . STR PLUS STR
+    (35) expression -> INT . STR MINUS STR
+    (36) expression -> INT . STR TIMES STR
+    (37) expression -> INT . STR DIVIDE STR
+    (38) expression -> INT . CHAR PLUS CHAR
+    (39) expression -> INT . CHAR MINUS CHAR
+    (40) expression -> INT . CHAR TIMES CHAR
+    (41) expression -> INT . CHAR DIVIDE CHAR
+    (12) int -> INT .
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+  ! shift/reduce conflict for CHAR resolved as shift
+    STR             shift and go to state 24
+    CHAR            shift and go to state 25
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    _               shift and go to state 15
+
+  ! CHAR            [ reduce using rule 12 (int -> INT .) ]
+
+    expression                     shift and go to state 22
+    string                         shift and go to state 23
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 8
+
+    (16) expression -> FLOAT . expression
+    (42) expression -> FLOAT . STR PLUS STR
+    (43) expression -> FLOAT . STR MINUS STR
+    (44) expression -> FLOAT . STR TIMES STR
+    (45) expression -> FLOAT . STR DIVIDE STR
+    (46) expression -> FLOAT . CHAR PLUS CHAR
+    (47) expression -> FLOAT . CHAR MINUS CHAR
+    (48) expression -> FLOAT . CHAR TIMES CHAR
+    (49) expression -> FLOAT . CHAR DIVIDE CHAR
+    (13) float -> FLOAT .
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+  ! shift/reduce conflict for STR resolved as shift
+  ! shift/reduce conflict for CHAR resolved as shift
+    STR             shift and go to state 27
+    CHAR            shift and go to state 28
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    _               shift and go to state 15
+
+  ! STR             [ reduce using rule 13 (float -> FLOAT .) ]
+  ! CHAR            [ reduce using rule 13 (float -> FLOAT .) ]
+
+    expression                     shift and go to state 26
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 9
+
+    (17) expression -> PRINT . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 29
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 10
+
+    (22) expression -> float . string PLUS string
+    (23) expression -> float . string MINUS string
+    (24) expression -> float . string TIMES string
+    (25) expression -> float . string DIVIDE string
+    (26) expression -> float . char PLUS char
+    (27) expression -> float . char MINUS char
+    (28) expression -> float . char TIMES char
+    (29) expression -> float . char DIVIDE char
+    (8) string -> . STR
+    (10) char -> . CHAR
+
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+
+    string                         shift and go to state 30
+    char                           shift and go to state 31
+
+state 11
+
+    (30) expression -> int . char PLUS char
+    (31) expression -> int . char MINUS char
+    (32) expression -> int . char TIMES char
+    (33) expression -> int . char DIVIDE char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 32
+
+state 12
+
+    (8) string -> STR .
+
+    PLUS            reduce using rule 8 (string -> STR .)
+    MINUS           reduce using rule 8 (string -> STR .)
+    TIMES           reduce using rule 8 (string -> STR .)
+    DIVIDE          reduce using rule 8 (string -> STR .)
+    $end            reduce using rule 8 (string -> STR .)
+    RPAREN          reduce using rule 8 (string -> STR .)
+
+
+state 13
+
+    (10) char -> CHAR .
+
+    PLUS            reduce using rule 10 (char -> CHAR .)
+    MINUS           reduce using rule 10 (char -> CHAR .)
+    TIMES           reduce using rule 10 (char -> CHAR .)
+    DIVIDE          reduce using rule 10 (char -> CHAR .)
+    $end            reduce using rule 10 (char -> CHAR .)
+    RPAREN          reduce using rule 10 (char -> CHAR .)
+
+
+state 14
+
+    (50) expression -> empty . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    empty                          shift and go to state 14
+    expression                     shift and go to state 33
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+
+state 15
+
+    (14) empty -> _ .
+
+    LPAREN          reduce using rule 14 (empty -> _ .)
+    MINUS           reduce using rule 14 (empty -> _ .)
+    NUMBER          reduce using rule 14 (empty -> _ .)
+    INT             reduce using rule 14 (empty -> _ .)
+    FLOAT           reduce using rule 14 (empty -> _ .)
+    PRINT           reduce using rule 14 (empty -> _ .)
+    STR             reduce using rule 14 (empty -> _ .)
+    CHAR            reduce using rule 14 (empty -> _ .)
+    _               reduce using rule 14 (empty -> _ .)
+
+
+state 16
+
+    (2) expression -> expression PLUS . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 34
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 17
+
+    (3) expression -> expression MINUS . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 35
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 18
+
+    (4) expression -> expression TIMES . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 36
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 19
+
+    (5) expression -> expression DIVIDE . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 15
+
+    expression                     shift and go to state 37
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 14
+
+state 20
+
+    (1) expression -> LPAREN expression . RPAREN
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+    RPAREN          shift and go to state 38
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+
+state 21
+
+    (6) expression -> MINUS expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 6 (expression -> MINUS expression .)
+    MINUS           reduce using rule 6 (expression -> MINUS expression .)
+    TIMES           reduce using rule 6 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 6 (expression -> MINUS expression .)
+    $end            reduce using rule 6 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 6 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 22
+
+    (15) expression -> INT expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 15 (expression -> INT expression .)
+    RPAREN          reduce using rule 15 (expression -> INT expression .)
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! PLUS            [ reduce using rule 15 (expression -> INT expression .) ]
+  ! MINUS           [ reduce using rule 15 (expression -> INT expression .) ]
+  ! TIMES           [ reduce using rule 15 (expression -> INT expression .) ]
+  ! DIVIDE          [ reduce using rule 15 (expression -> INT expression .) ]
+
+
+state 23
+
+    (18) expression -> INT string . PLUS string
+    (19) expression -> INT string . MINUS string
+    (20) expression -> INT string . TIMES string
+    (21) expression -> INT string . DIVIDE string
+    (9) expression -> string .
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    PLUS            shift and go to state 39
+    MINUS           shift and go to state 40
+    TIMES           shift and go to state 41
+    DIVIDE          shift and go to state 42
+    $end            reduce using rule 9 (expression -> string .)
+    RPAREN          reduce using rule 9 (expression -> string .)
+
+  ! PLUS            [ reduce using rule 9 (expression -> string .) ]
+  ! MINUS           [ reduce using rule 9 (expression -> string .) ]
+  ! TIMES           [ reduce using rule 9 (expression -> string .) ]
+  ! DIVIDE          [ reduce using rule 9 (expression -> string .) ]
+
+
+state 24
+
+    (34) expression -> INT STR . PLUS STR
+    (35) expression -> INT STR . MINUS STR
+    (36) expression -> INT STR . TIMES STR
+    (37) expression -> INT STR . DIVIDE STR
+    (8) string -> STR .
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    PLUS            shift and go to state 43
+    MINUS           shift and go to state 44
+    TIMES           shift and go to state 45
+    DIVIDE          shift and go to state 46
+    $end            reduce using rule 8 (string -> STR .)
+    RPAREN          reduce using rule 8 (string -> STR .)
+
+  ! PLUS            [ reduce using rule 8 (string -> STR .) ]
+  ! MINUS           [ reduce using rule 8 (string -> STR .) ]
+  ! TIMES           [ reduce using rule 8 (string -> STR .) ]
+  ! DIVIDE          [ reduce using rule 8 (string -> STR .) ]
+
+
+state 25
+
+    (38) expression -> INT CHAR . PLUS CHAR
+    (39) expression -> INT CHAR . MINUS CHAR
+    (40) expression -> INT CHAR . TIMES CHAR
+    (41) expression -> INT CHAR . DIVIDE CHAR
+    (10) char -> CHAR .
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    PLUS            shift and go to state 47
+    MINUS           shift and go to state 48
+    TIMES           shift and go to state 49
+    DIVIDE          shift and go to state 50
+    $end            reduce using rule 10 (char -> CHAR .)
+    RPAREN          reduce using rule 10 (char -> CHAR .)
+
+  ! PLUS            [ reduce using rule 10 (char -> CHAR .) ]
+  ! MINUS           [ reduce using rule 10 (char -> CHAR .) ]
+  ! TIMES           [ reduce using rule 10 (char -> CHAR .) ]
+  ! DIVIDE          [ reduce using rule 10 (char -> CHAR .) ]
+
+
+state 26
+
+    (16) expression -> FLOAT expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 16 (expression -> FLOAT expression .)
+    RPAREN          reduce using rule 16 (expression -> FLOAT expression .)
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! PLUS            [ reduce using rule 16 (expression -> FLOAT expression .) ]
+  ! MINUS           [ reduce using rule 16 (expression -> FLOAT expression .) ]
+  ! TIMES           [ reduce using rule 16 (expression -> FLOAT expression .) ]
+  ! DIVIDE          [ reduce using rule 16 (expression -> FLOAT expression .) ]
+
+
+state 27
+
+    (42) expression -> FLOAT STR . PLUS STR
+    (43) expression -> FLOAT STR . MINUS STR
+    (44) expression -> FLOAT STR . TIMES STR
+    (45) expression -> FLOAT STR . DIVIDE STR
+    (8) string -> STR .
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    PLUS            shift and go to state 51
+    MINUS           shift and go to state 52
+    TIMES           shift and go to state 53
+    DIVIDE          shift and go to state 54
+    $end            reduce using rule 8 (string -> STR .)
+    RPAREN          reduce using rule 8 (string -> STR .)
+
+  ! PLUS            [ reduce using rule 8 (string -> STR .) ]
+  ! MINUS           [ reduce using rule 8 (string -> STR .) ]
+  ! TIMES           [ reduce using rule 8 (string -> STR .) ]
+  ! DIVIDE          [ reduce using rule 8 (string -> STR .) ]
+
+
+state 28
+
+    (46) expression -> FLOAT CHAR . PLUS CHAR
+    (47) expression -> FLOAT CHAR . MINUS CHAR
+    (48) expression -> FLOAT CHAR . TIMES CHAR
+    (49) expression -> FLOAT CHAR . DIVIDE CHAR
+    (10) char -> CHAR .
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    PLUS            shift and go to state 55
+    MINUS           shift and go to state 56
+    TIMES           shift and go to state 57
+    DIVIDE          shift and go to state 58
+    $end            reduce using rule 10 (char -> CHAR .)
+    RPAREN          reduce using rule 10 (char -> CHAR .)
+
+  ! PLUS            [ reduce using rule 10 (char -> CHAR .) ]
+  ! MINUS           [ reduce using rule 10 (char -> CHAR .) ]
+  ! TIMES           [ reduce using rule 10 (char -> CHAR .) ]
+  ! DIVIDE          [ reduce using rule 10 (char -> CHAR .) ]
+
+
+state 29
+
+    (17) expression -> PRINT expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 17 (expression -> PRINT expression .)
+    RPAREN          reduce using rule 17 (expression -> PRINT expression .)
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! PLUS            [ reduce using rule 17 (expression -> PRINT expression .) ]
+  ! MINUS           [ reduce using rule 17 (expression -> PRINT expression .) ]
+  ! TIMES           [ reduce using rule 17 (expression -> PRINT expression .) ]
+  ! DIVIDE          [ reduce using rule 17 (expression -> PRINT expression .) ]
+
+
+state 30
+
+    (22) expression -> float string . PLUS string
+    (23) expression -> float string . MINUS string
+    (24) expression -> float string . TIMES string
+    (25) expression -> float string . DIVIDE string
+
+    PLUS            shift and go to state 59
+    MINUS           shift and go to state 60
+    TIMES           shift and go to state 61
+    DIVIDE          shift and go to state 62
+
+
+state 31
+
+    (26) expression -> float char . PLUS char
+    (27) expression -> float char . MINUS char
+    (28) expression -> float char . TIMES char
+    (29) expression -> float char . DIVIDE char
+
+    PLUS            shift and go to state 63
+    MINUS           shift and go to state 64
+    TIMES           shift and go to state 65
+    DIVIDE          shift and go to state 66
+
+
+state 32
+
+    (30) expression -> int char . PLUS char
+    (31) expression -> int char . MINUS char
+    (32) expression -> int char . TIMES char
+    (33) expression -> int char . DIVIDE char
+
+    PLUS            shift and go to state 67
+    MINUS           shift and go to state 68
+    TIMES           shift and go to state 69
+    DIVIDE          shift and go to state 70
+
+
+state 33
+
+    (50) expression -> empty expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 50 (expression -> empty expression .)
+    RPAREN          reduce using rule 50 (expression -> empty expression .)
+    PLUS            shift and go to state 16
+    MINUS           shift and go to state 17
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! PLUS            [ reduce using rule 50 (expression -> empty expression .) ]
+  ! MINUS           [ reduce using rule 50 (expression -> empty expression .) ]
+  ! TIMES           [ reduce using rule 50 (expression -> empty expression .) ]
+  ! DIVIDE          [ reduce using rule 50 (expression -> empty expression .) ]
+
+
+state 34
+
+    (2) expression -> expression PLUS expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 2 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 2 (expression -> expression PLUS expression .)
+    $end            reduce using rule 2 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 2 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! TIMES           [ reduce using rule 2 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 2 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+
+
+state 35
+
+    (3) expression -> expression MINUS expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 3 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 3 (expression -> expression MINUS expression .)
+    $end            reduce using rule 3 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 3 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 19
+
+  ! TIMES           [ reduce using rule 3 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 3 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+
+
+state 36
+
+    (4) expression -> expression TIMES expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 4 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 4 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 4 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 4 (expression -> expression TIMES expression .)
+    $end            reduce using rule 4 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 4 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 37
+
+    (5) expression -> expression DIVIDE expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 5 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 5 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 5 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 5 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 5 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 5 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 16 ]
+  ! MINUS           [ shift and go to state 17 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 19 ]
+
+
+state 38
+
+    (1) expression -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 1 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 1 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 1 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 1 (expression -> LPAREN expression RPAREN .)
+    $end            reduce using rule 1 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 1 (expression -> LPAREN expression RPAREN .)
+
+
+state 39
+
+    (18) expression -> INT string PLUS . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 71
+
+state 40
+
+    (19) expression -> INT string MINUS . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 72
+
+state 41
+
+    (20) expression -> INT string TIMES . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 73
+
+state 42
+
+    (21) expression -> INT string DIVIDE . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 74
+
+state 43
+
+    (34) expression -> INT STR PLUS . STR
+
+    STR             shift and go to state 75
+
+
+state 44
+
+    (35) expression -> INT STR MINUS . STR
+
+    STR             shift and go to state 76
+
+
+state 45
+
+    (36) expression -> INT STR TIMES . STR
+
+    STR             shift and go to state 77
+
+
+state 46
+
+    (37) expression -> INT STR DIVIDE . STR
+
+    STR             shift and go to state 78
+
+
+state 47
+
+    (38) expression -> INT CHAR PLUS . CHAR
+
+    CHAR            shift and go to state 79
+
+
+state 48
+
+    (39) expression -> INT CHAR MINUS . CHAR
+
+    CHAR            shift and go to state 80
+
+
+state 49
+
+    (40) expression -> INT CHAR TIMES . CHAR
+
+    CHAR            shift and go to state 81
+
+
+state 50
+
+    (41) expression -> INT CHAR DIVIDE . CHAR
+
+    CHAR            shift and go to state 82
+
+
+state 51
+
+    (42) expression -> FLOAT STR PLUS . STR
+
+    STR             shift and go to state 83
+
+
+state 52
+
+    (43) expression -> FLOAT STR MINUS . STR
+
+    STR             shift and go to state 84
+
+
+state 53
+
+    (44) expression -> FLOAT STR TIMES . STR
+
+    STR             shift and go to state 85
+
+
+state 54
+
+    (45) expression -> FLOAT STR DIVIDE . STR
+
+    STR             shift and go to state 86
+
+
+state 55
+
+    (46) expression -> FLOAT CHAR PLUS . CHAR
+
+    CHAR            shift and go to state 87
+
+
+state 56
+
+    (47) expression -> FLOAT CHAR MINUS . CHAR
+
+    CHAR            shift and go to state 88
+
+
+state 57
+
+    (48) expression -> FLOAT CHAR TIMES . CHAR
+
+    CHAR            shift and go to state 89
+
+
+state 58
+
+    (49) expression -> FLOAT CHAR DIVIDE . CHAR
+
+    CHAR            shift and go to state 90
+
+
+state 59
+
+    (22) expression -> float string PLUS . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 91
+
+state 60
+
+    (23) expression -> float string MINUS . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 92
+
+state 61
+
+    (24) expression -> float string TIMES . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 93
+
+state 62
+
+    (25) expression -> float string DIVIDE . string
+    (8) string -> . STR
+
+    STR             shift and go to state 12
+
+    string                         shift and go to state 94
+
+state 63
+
+    (26) expression -> float char PLUS . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 95
+
+state 64
+
+    (27) expression -> float char MINUS . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 96
+
+state 65
+
+    (28) expression -> float char TIMES . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 97
+
+state 66
+
+    (29) expression -> float char DIVIDE . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 98
+
+state 67
+
+    (30) expression -> int char PLUS . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 99
+
+state 68
+
+    (31) expression -> int char MINUS . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 100
+
+state 69
+
+    (32) expression -> int char TIMES . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 101
+
+state 70
+
+    (33) expression -> int char DIVIDE . char
+    (10) char -> . CHAR
+
+    CHAR            shift and go to state 13
+
+    char                           shift and go to state 102
+
+state 71
+
+    (18) expression -> INT string PLUS string .
+
+    PLUS            reduce using rule 18 (expression -> INT string PLUS string .)
+    MINUS           reduce using rule 18 (expression -> INT string PLUS string .)
+    TIMES           reduce using rule 18 (expression -> INT string PLUS string .)
+    DIVIDE          reduce using rule 18 (expression -> INT string PLUS string .)
+    $end            reduce using rule 18 (expression -> INT string PLUS string .)
+    RPAREN          reduce using rule 18 (expression -> INT string PLUS string .)
+
+
+state 72
+
+    (19) expression -> INT string MINUS string .
+
+    PLUS            reduce using rule 19 (expression -> INT string MINUS string .)
+    MINUS           reduce using rule 19 (expression -> INT string MINUS string .)
+    TIMES           reduce using rule 19 (expression -> INT string MINUS string .)
+    DIVIDE          reduce using rule 19 (expression -> INT string MINUS string .)
+    $end            reduce using rule 19 (expression -> INT string MINUS string .)
+    RPAREN          reduce using rule 19 (expression -> INT string MINUS string .)
+
+
+state 73
+
+    (20) expression -> INT string TIMES string .
+
+    PLUS            reduce using rule 20 (expression -> INT string TIMES string .)
+    MINUS           reduce using rule 20 (expression -> INT string TIMES string .)
+    TIMES           reduce using rule 20 (expression -> INT string TIMES string .)
+    DIVIDE          reduce using rule 20 (expression -> INT string TIMES string .)
+    $end            reduce using rule 20 (expression -> INT string TIMES string .)
+    RPAREN          reduce using rule 20 (expression -> INT string TIMES string .)
+
+
+state 74
+
+    (21) expression -> INT string DIVIDE string .
+
+    PLUS            reduce using rule 21 (expression -> INT string DIVIDE string .)
+    MINUS           reduce using rule 21 (expression -> INT string DIVIDE string .)
+    TIMES           reduce using rule 21 (expression -> INT string DIVIDE string .)
+    DIVIDE          reduce using rule 21 (expression -> INT string DIVIDE string .)
+    $end            reduce using rule 21 (expression -> INT string DIVIDE string .)
+    RPAREN          reduce using rule 21 (expression -> INT string DIVIDE string .)
+
+
+state 75
+
+    (34) expression -> INT STR PLUS STR .
+
+    PLUS            reduce using rule 34 (expression -> INT STR PLUS STR .)
+    MINUS           reduce using rule 34 (expression -> INT STR PLUS STR .)
+    TIMES           reduce using rule 34 (expression -> INT STR PLUS STR .)
+    DIVIDE          reduce using rule 34 (expression -> INT STR PLUS STR .)
+    $end            reduce using rule 34 (expression -> INT STR PLUS STR .)
+    RPAREN          reduce using rule 34 (expression -> INT STR PLUS STR .)
+
+
+state 76
+
+    (35) expression -> INT STR MINUS STR .
+
+    PLUS            reduce using rule 35 (expression -> INT STR MINUS STR .)
+    MINUS           reduce using rule 35 (expression -> INT STR MINUS STR .)
+    TIMES           reduce using rule 35 (expression -> INT STR MINUS STR .)
+    DIVIDE          reduce using rule 35 (expression -> INT STR MINUS STR .)
+    $end            reduce using rule 35 (expression -> INT STR MINUS STR .)
+    RPAREN          reduce using rule 35 (expression -> INT STR MINUS STR .)
+
+
+state 77
+
+    (36) expression -> INT STR TIMES STR .
+
+    PLUS            reduce using rule 36 (expression -> INT STR TIMES STR .)
+    MINUS           reduce using rule 36 (expression -> INT STR TIMES STR .)
+    TIMES           reduce using rule 36 (expression -> INT STR TIMES STR .)
+    DIVIDE          reduce using rule 36 (expression -> INT STR TIMES STR .)
+    $end            reduce using rule 36 (expression -> INT STR TIMES STR .)
+    RPAREN          reduce using rule 36 (expression -> INT STR TIMES STR .)
+
+
+state 78
+
+    (37) expression -> INT STR DIVIDE STR .
+
+    PLUS            reduce using rule 37 (expression -> INT STR DIVIDE STR .)
+    MINUS           reduce using rule 37 (expression -> INT STR DIVIDE STR .)
+    TIMES           reduce using rule 37 (expression -> INT STR DIVIDE STR .)
+    DIVIDE          reduce using rule 37 (expression -> INT STR DIVIDE STR .)
+    $end            reduce using rule 37 (expression -> INT STR DIVIDE STR .)
+    RPAREN          reduce using rule 37 (expression -> INT STR DIVIDE STR .)
+
+
+state 79
+
+    (38) expression -> INT CHAR PLUS CHAR .
+
+    PLUS            reduce using rule 38 (expression -> INT CHAR PLUS CHAR .)
+    MINUS           reduce using rule 38 (expression -> INT CHAR PLUS CHAR .)
+    TIMES           reduce using rule 38 (expression -> INT CHAR PLUS CHAR .)
+    DIVIDE          reduce using rule 38 (expression -> INT CHAR PLUS CHAR .)
+    $end            reduce using rule 38 (expression -> INT CHAR PLUS CHAR .)
+    RPAREN          reduce using rule 38 (expression -> INT CHAR PLUS CHAR .)
+
+
+state 80
+
+    (39) expression -> INT CHAR MINUS CHAR .
+
+    PLUS            reduce using rule 39 (expression -> INT CHAR MINUS CHAR .)
+    MINUS           reduce using rule 39 (expression -> INT CHAR MINUS CHAR .)
+    TIMES           reduce using rule 39 (expression -> INT CHAR MINUS CHAR .)
+    DIVIDE          reduce using rule 39 (expression -> INT CHAR MINUS CHAR .)
+    $end            reduce using rule 39 (expression -> INT CHAR MINUS CHAR .)
+    RPAREN          reduce using rule 39 (expression -> INT CHAR MINUS CHAR .)
+
+
+state 81
+
+    (40) expression -> INT CHAR TIMES CHAR .
+
+    PLUS            reduce using rule 40 (expression -> INT CHAR TIMES CHAR .)
+    MINUS           reduce using rule 40 (expression -> INT CHAR TIMES CHAR .)
+    TIMES           reduce using rule 40 (expression -> INT CHAR TIMES CHAR .)
+    DIVIDE          reduce using rule 40 (expression -> INT CHAR TIMES CHAR .)
+    $end            reduce using rule 40 (expression -> INT CHAR TIMES CHAR .)
+    RPAREN          reduce using rule 40 (expression -> INT CHAR TIMES CHAR .)
+
+
+state 82
+
+    (41) expression -> INT CHAR DIVIDE CHAR .
+
+    PLUS            reduce using rule 41 (expression -> INT CHAR DIVIDE CHAR .)
+    MINUS           reduce using rule 41 (expression -> INT CHAR DIVIDE CHAR .)
+    TIMES           reduce using rule 41 (expression -> INT CHAR DIVIDE CHAR .)
+    DIVIDE          reduce using rule 41 (expression -> INT CHAR DIVIDE CHAR .)
+    $end            reduce using rule 41 (expression -> INT CHAR DIVIDE CHAR .)
+    RPAREN          reduce using rule 41 (expression -> INT CHAR DIVIDE CHAR .)
+
+
+state 83
+
+    (42) expression -> FLOAT STR PLUS STR .
+
+    PLUS            reduce using rule 42 (expression -> FLOAT STR PLUS STR .)
+    MINUS           reduce using rule 42 (expression -> FLOAT STR PLUS STR .)
+    TIMES           reduce using rule 42 (expression -> FLOAT STR PLUS STR .)
+    DIVIDE          reduce using rule 42 (expression -> FLOAT STR PLUS STR .)
+    $end            reduce using rule 42 (expression -> FLOAT STR PLUS STR .)
+    RPAREN          reduce using rule 42 (expression -> FLOAT STR PLUS STR .)
+
+
+state 84
+
+    (43) expression -> FLOAT STR MINUS STR .
+
+    PLUS            reduce using rule 43 (expression -> FLOAT STR MINUS STR .)
+    MINUS           reduce using rule 43 (expression -> FLOAT STR MINUS STR .)
+    TIMES           reduce using rule 43 (expression -> FLOAT STR MINUS STR .)
+    DIVIDE          reduce using rule 43 (expression -> FLOAT STR MINUS STR .)
+    $end            reduce using rule 43 (expression -> FLOAT STR MINUS STR .)
+    RPAREN          reduce using rule 43 (expression -> FLOAT STR MINUS STR .)
+
+
+state 85
+
+    (44) expression -> FLOAT STR TIMES STR .
+
+    PLUS            reduce using rule 44 (expression -> FLOAT STR TIMES STR .)
+    MINUS           reduce using rule 44 (expression -> FLOAT STR TIMES STR .)
+    TIMES           reduce using rule 44 (expression -> FLOAT STR TIMES STR .)
+    DIVIDE          reduce using rule 44 (expression -> FLOAT STR TIMES STR .)
+    $end            reduce using rule 44 (expression -> FLOAT STR TIMES STR .)
+    RPAREN          reduce using rule 44 (expression -> FLOAT STR TIMES STR .)
+
+
+state 86
+
+    (45) expression -> FLOAT STR DIVIDE STR .
+
+    PLUS            reduce using rule 45 (expression -> FLOAT STR DIVIDE STR .)
+    MINUS           reduce using rule 45 (expression -> FLOAT STR DIVIDE STR .)
+    TIMES           reduce using rule 45 (expression -> FLOAT STR DIVIDE STR .)
+    DIVIDE          reduce using rule 45 (expression -> FLOAT STR DIVIDE STR .)
+    $end            reduce using rule 45 (expression -> FLOAT STR DIVIDE STR .)
+    RPAREN          reduce using rule 45 (expression -> FLOAT STR DIVIDE STR .)
+
+
+state 87
+
+    (46) expression -> FLOAT CHAR PLUS CHAR .
+
+    PLUS            reduce using rule 46 (expression -> FLOAT CHAR PLUS CHAR .)
+    MINUS           reduce using rule 46 (expression -> FLOAT CHAR PLUS CHAR .)
+    TIMES           reduce using rule 46 (expression -> FLOAT CHAR PLUS CHAR .)
+    DIVIDE          reduce using rule 46 (expression -> FLOAT CHAR PLUS CHAR .)
+    $end            reduce using rule 46 (expression -> FLOAT CHAR PLUS CHAR .)
+    RPAREN          reduce using rule 46 (expression -> FLOAT CHAR PLUS CHAR .)
+
+
+state 88
+
+    (47) expression -> FLOAT CHAR MINUS CHAR .
+
+    PLUS            reduce using rule 47 (expression -> FLOAT CHAR MINUS CHAR .)
+    MINUS           reduce using rule 47 (expression -> FLOAT CHAR MINUS CHAR .)
+    TIMES           reduce using rule 47 (expression -> FLOAT CHAR MINUS CHAR .)
+    DIVIDE          reduce using rule 47 (expression -> FLOAT CHAR MINUS CHAR .)
+    $end            reduce using rule 47 (expression -> FLOAT CHAR MINUS CHAR .)
+    RPAREN          reduce using rule 47 (expression -> FLOAT CHAR MINUS CHAR .)
+
+
+state 89
+
+    (48) expression -> FLOAT CHAR TIMES CHAR .
+
+    PLUS            reduce using rule 48 (expression -> FLOAT CHAR TIMES CHAR .)
+    MINUS           reduce using rule 48 (expression -> FLOAT CHAR TIMES CHAR .)
+    TIMES           reduce using rule 48 (expression -> FLOAT CHAR TIMES CHAR .)
+    DIVIDE          reduce using rule 48 (expression -> FLOAT CHAR TIMES CHAR .)
+    $end            reduce using rule 48 (expression -> FLOAT CHAR TIMES CHAR .)
+    RPAREN          reduce using rule 48 (expression -> FLOAT CHAR TIMES CHAR .)
+
+
+state 90
+
+    (49) expression -> FLOAT CHAR DIVIDE CHAR .
+
+    PLUS            reduce using rule 49 (expression -> FLOAT CHAR DIVIDE CHAR .)
+    MINUS           reduce using rule 49 (expression -> FLOAT CHAR DIVIDE CHAR .)
+    TIMES           reduce using rule 49 (expression -> FLOAT CHAR DIVIDE CHAR .)
+    DIVIDE          reduce using rule 49 (expression -> FLOAT CHAR DIVIDE CHAR .)
+    $end            reduce using rule 49 (expression -> FLOAT CHAR DIVIDE CHAR .)
+    RPAREN          reduce using rule 49 (expression -> FLOAT CHAR DIVIDE CHAR .)
+
+
+state 91
+
+    (22) expression -> float string PLUS string .
+
+    PLUS            reduce using rule 22 (expression -> float string PLUS string .)
+    MINUS           reduce using rule 22 (expression -> float string PLUS string .)
+    TIMES           reduce using rule 22 (expression -> float string PLUS string .)
+    DIVIDE          reduce using rule 22 (expression -> float string PLUS string .)
+    $end            reduce using rule 22 (expression -> float string PLUS string .)
+    RPAREN          reduce using rule 22 (expression -> float string PLUS string .)
+
+
+state 92
+
+    (23) expression -> float string MINUS string .
+
+    PLUS            reduce using rule 23 (expression -> float string MINUS string .)
+    MINUS           reduce using rule 23 (expression -> float string MINUS string .)
+    TIMES           reduce using rule 23 (expression -> float string MINUS string .)
+    DIVIDE          reduce using rule 23 (expression -> float string MINUS string .)
+    $end            reduce using rule 23 (expression -> float string MINUS string .)
+    RPAREN          reduce using rule 23 (expression -> float string MINUS string .)
+
+
+state 93
+
+    (24) expression -> float string TIMES string .
+
+    PLUS            reduce using rule 24 (expression -> float string TIMES string .)
+    MINUS           reduce using rule 24 (expression -> float string TIMES string .)
+    TIMES           reduce using rule 24 (expression -> float string TIMES string .)
+    DIVIDE          reduce using rule 24 (expression -> float string TIMES string .)
+    $end            reduce using rule 24 (expression -> float string TIMES string .)
+    RPAREN          reduce using rule 24 (expression -> float string TIMES string .)
+
+
+state 94
+
+    (25) expression -> float string DIVIDE string .
+
+    PLUS            reduce using rule 25 (expression -> float string DIVIDE string .)
+    MINUS           reduce using rule 25 (expression -> float string DIVIDE string .)
+    TIMES           reduce using rule 25 (expression -> float string DIVIDE string .)
+    DIVIDE          reduce using rule 25 (expression -> float string DIVIDE string .)
+    $end            reduce using rule 25 (expression -> float string DIVIDE string .)
+    RPAREN          reduce using rule 25 (expression -> float string DIVIDE string .)
+
+
+state 95
+
+    (26) expression -> float char PLUS char .
+
+    PLUS            reduce using rule 26 (expression -> float char PLUS char .)
+    MINUS           reduce using rule 26 (expression -> float char PLUS char .)
+    TIMES           reduce using rule 26 (expression -> float char PLUS char .)
+    DIVIDE          reduce using rule 26 (expression -> float char PLUS char .)
+    $end            reduce using rule 26 (expression -> float char PLUS char .)
+    RPAREN          reduce using rule 26 (expression -> float char PLUS char .)
+
+
+state 96
+
+    (27) expression -> float char MINUS char .
+
+    PLUS            reduce using rule 27 (expression -> float char MINUS char .)
+    MINUS           reduce using rule 27 (expression -> float char MINUS char .)
+    TIMES           reduce using rule 27 (expression -> float char MINUS char .)
+    DIVIDE          reduce using rule 27 (expression -> float char MINUS char .)
+    $end            reduce using rule 27 (expression -> float char MINUS char .)
+    RPAREN          reduce using rule 27 (expression -> float char MINUS char .)
+
+
+state 97
+
+    (28) expression -> float char TIMES char .
+
+    PLUS            reduce using rule 28 (expression -> float char TIMES char .)
+    MINUS           reduce using rule 28 (expression -> float char TIMES char .)
+    TIMES           reduce using rule 28 (expression -> float char TIMES char .)
+    DIVIDE          reduce using rule 28 (expression -> float char TIMES char .)
+    $end            reduce using rule 28 (expression -> float char TIMES char .)
+    RPAREN          reduce using rule 28 (expression -> float char TIMES char .)
+
+
+state 98
+
+    (29) expression -> float char DIVIDE char .
+
+    PLUS            reduce using rule 29 (expression -> float char DIVIDE char .)
+    MINUS           reduce using rule 29 (expression -> float char DIVIDE char .)
+    TIMES           reduce using rule 29 (expression -> float char DIVIDE char .)
+    DIVIDE          reduce using rule 29 (expression -> float char DIVIDE char .)
+    $end            reduce using rule 29 (expression -> float char DIVIDE char .)
+    RPAREN          reduce using rule 29 (expression -> float char DIVIDE char .)
+
+
+state 99
+
+    (30) expression -> int char PLUS char .
+
+    PLUS            reduce using rule 30 (expression -> int char PLUS char .)
+    MINUS           reduce using rule 30 (expression -> int char PLUS char .)
+    TIMES           reduce using rule 30 (expression -> int char PLUS char .)
+    DIVIDE          reduce using rule 30 (expression -> int char PLUS char .)
+    $end            reduce using rule 30 (expression -> int char PLUS char .)
+    RPAREN          reduce using rule 30 (expression -> int char PLUS char .)
+
+
+state 100
+
+    (31) expression -> int char MINUS char .
+
+    PLUS            reduce using rule 31 (expression -> int char MINUS char .)
+    MINUS           reduce using rule 31 (expression -> int char MINUS char .)
+    TIMES           reduce using rule 31 (expression -> int char MINUS char .)
+    DIVIDE          reduce using rule 31 (expression -> int char MINUS char .)
+    $end            reduce using rule 31 (expression -> int char MINUS char .)
+    RPAREN          reduce using rule 31 (expression -> int char MINUS char .)
+
+
+state 101
+
+    (32) expression -> int char TIMES char .
+
+    PLUS            reduce using rule 32 (expression -> int char TIMES char .)
+    MINUS           reduce using rule 32 (expression -> int char TIMES char .)
+    TIMES           reduce using rule 32 (expression -> int char TIMES char .)
+    DIVIDE          reduce using rule 32 (expression -> int char TIMES char .)
+    $end            reduce using rule 32 (expression -> int char TIMES char .)
+    RPAREN          reduce using rule 32 (expression -> int char TIMES char .)
+
+
+state 102
+
+    (33) expression -> int char DIVIDE char .
+
+    PLUS            reduce using rule 33 (expression -> int char DIVIDE char .)
+    MINUS           reduce using rule 33 (expression -> int char DIVIDE char .)
+    TIMES           reduce using rule 33 (expression -> int char DIVIDE char .)
+    DIVIDE          reduce using rule 33 (expression -> int char DIVIDE char .)
+    $end            reduce using rule 33 (expression -> int char DIVIDE char .)
+    RPAREN          reduce using rule 33 (expression -> int char DIVIDE char .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for CHAR in state 7 resolved as shift
+WARNING: shift/reduce conflict for STR in state 8 resolved as shift
+WARNING: shift/reduce conflict for CHAR in state 8 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 22 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 22 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 22 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 22 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 23 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 23 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 23 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 23 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 24 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 24 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 24 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 24 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 25 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 25 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 25 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 25 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 26 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 26 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 26 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 26 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 27 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 27 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 27 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 27 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 28 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 28 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 28 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 28 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 29 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 29 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 29 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 29 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 33 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 33 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 33 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 33 resolved as shift

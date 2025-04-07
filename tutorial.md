@@ -18,7 +18,7 @@ Int Float >> <<>> | _
 
 ## Example:
 ```
->> HelloWorld | ECHO A 'HELLO WORLD'
+>> "HelloWorld" | ECHO A 'HELLO WORLD'
 ```
 
 SelinaScript is not force the line indent, But we recommend you to use 4 spaces to indent to keep the code readable.
@@ -49,6 +49,8 @@ For example:
 ```
 
 In SelinaScript, we use ```0``` and ```1``` to declare the ```boolean``` value and use ```''``` to declare ```char```, use ```""``` to declare ```string```, use ```_``` to declare ```null```
+
+#### TIPS: You cannot use ```-``` or ```/``` and ```*``` to operate any string and char although they have integer type or float type and you must string + string, you can't string + char or char + string
 
 when you not declare the type, but you ```number``` meets a ```string```, SelinaScript will auto translate the ```number``` to ```string```, you can use 
 ``` list ``` to declare the ```list```
