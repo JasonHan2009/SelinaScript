@@ -2,17 +2,25 @@ import ply.yacc as yacc
 from lexical import lexer
 from tokens import token_list
 
+#########################################
+#        SELINA SCRIPT COMPILER         #
+#        @ COPYRIGHT SHIZUKUTECH        #      
+#########################################
+# 定义TOKENS列表
 tokens = token_list
 
+# 定义优先级
 precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE'),
     ('nonassoc', 'UMINUS'),
 )
+# expr -> (lpar expr rpar)
 def p_expression_group(p):
     '''expression : LPAREN expression RPAREN'''
     p[0] = p[2]
 
+# 基本表达式
 def p_expression_binop(p):
     '''
     expression : expression PLUS expression
@@ -29,14 +37,19 @@ def p_expression_binop(p):
     elif p[2] == '/': 
         p[0] = p[1] / p[3]
 
+# UMIN
 def p_expression_uminus(p):
     'expression : MINUS expression %prec UMINUS'
     p[0] = -p[2]
 
+# 数字
 def p_expression_number(p):
     'expression : NUMBER'
     p[0] = p[1]
 
+##########
+# 数据类型#
+##########
 def p_string(p):
     '''
     string : STR
@@ -79,7 +92,9 @@ def p__(p):
     '''
     p[0] = p[1]
 
+#END
 
+# 数据类型特殊处理
 def p_int_expr(p):
     '''
     expression : INT expression
@@ -123,17 +138,13 @@ def p_float_expr(p):
     if is_number(p[2].replace('"', '')):
         p[0] = float(p[2].replace('"', ''))
 
-def p_printstmt(p):
-    '''
-    expression : PRINT expression
-    '''
-    if isinstance(p[2], str):
-        # Handle all string types
-        print(p[2])
-        p[0] = p[2]
-    else:
-        print(p[2])
-        p[0] = p[2]
+# END
+def p_statement_print(p):
+    'expression : PRINT expression'
+    print(p[2])
+    p[0] = p[2]
+
+
 # 解析字符串级运算(INT)
 def p_string_calculate(p):
     '''
@@ -284,8 +295,27 @@ def p_with_type_str_or_char_calc(p):
             p[0] = float(op1) * float(op2)
         elif mid == '/' and left == 'Float':
             p[0] = float(op1) / float(op2) if float(op2) != 0.0 else 0.0
-        
-            
+
+# END
+var_dict = {}
+# 解析变量定义
+# For variable definition errors
+def p_var_def(p):
+    'expression : ID EQUAL expression'
+    if p[1] in var_dict:
+        print(f"Error at line {p.lineno(1)}: Variable '{p[1]}' already defined")
+    else:
+        var_dict[p[1]] = p[3]
+# 解析变量调用
+def p_var_call(p):
+    '''
+    expression : ID
+    '''
+    if p[1] in var_dict:
+        p[0] = var_dict[p[1]]
+    else:
+        p[0] = p[1]
+
 
 def p_empty(p):
     '''
@@ -293,14 +323,41 @@ def p_empty(p):
     '''
     p[0] = '_'
 
+# For syntax errors
 def p_error(p):
-    print("语法错误!")
-# === 初始化 ===
-parser = yacc.yacc()
+    if p:
+        print(f"Syntax error at line {p.lineno}: Unexpected token '{p.type}'")
+        # Use parser instance methods instead of global yacc functions
+        parser.errok()
+    else:
+        print("Syntax error: Unexpected end of input")
 
-# === 测试用例 ===
+
+
+
+parser = yacc.yacc()  # Explicitly set start symbol
+
 if __name__ == "__main__":
-    while (True):
-        expr = input("CLI ")
-        result = parser.parse(expr)
-        
+    import sys
+    if len(sys.argv) < 2:
+        print("Usage: python parser.py <args>")
+        sys.exit(1)
+    
+    param = sys.argv[1]
+
+    if param == "CLI":
+        while True:
+            try:
+                s = input('calc > ')
+            except EOFError:
+                break
+            if not s: continue
+            result = parser.parse(s)
+    else:
+        with open(param, 'r') as f:
+            for line in f:
+                # Remove trailing newline characters and whitespace
+                cleaned_line = line.strip()
+                if cleaned_line:  # Skip empty lines
+                    parser.parse(cleaned_line)
+            

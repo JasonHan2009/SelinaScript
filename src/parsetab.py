@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDEnonassocUMINUSCHAR DIVIDE FLOAT INT LIST LPAREN MINUS NUMBER PLUS PRINT RPAREN STR TIMES _expression : LPAREN expression RPAREN\n    expression : expression PLUS expression\n               | expression MINUS expression\n               | expression TIMES expression\n               | expression DIVIDE expression\n    expression : MINUS expression %prec UMINUSexpression : NUMBER\n    string : STR\n    \n    expression : string\n    \n    char : CHAR\n    \n    expression : char\n    \n    int : INT\n    \n    float : FLOAT\n    \n    empty : _\n    \n    expression : INT expression\n    \n    expression : FLOAT expression\n    \n    expression : PRINT expression\n    \n    expression : INT string PLUS string\n               | INT string MINUS string\n               | INT string TIMES string\n               | INT string DIVIDE string\n    \n    expression : float string PLUS string\n               | float string MINUS string\n               | float string TIMES string\n               | float string DIVIDE string\n               \n    \n    expression : float char PLUS char\n               | float char MINUS char\n               | float char TIMES char\n               | float char DIVIDE char\n               \n    \n    expression : int char PLUS char\n               | int char MINUS char\n               | int char TIMES char\n               | int char DIVIDE char\n               \n    \n    expression : INT STR PLUS STR\n               | INT STR MINUS STR\n               | INT STR TIMES STR\n               | INT STR DIVIDE STR\n\n               | INT CHAR PLUS CHAR\n               | INT CHAR MINUS CHAR\n               | INT CHAR TIMES CHAR\n               | INT CHAR DIVIDE CHAR\n\n               | FLOAT STR PLUS STR\n               | FLOAT STR MINUS STR\n               | FLOAT STR TIMES STR\n               | FLOAT STR DIVIDE STR\n\n               | FLOAT CHAR PLUS CHAR\n               | FLOAT CHAR MINUS CHAR\n               | FLOAT CHAR TIMES CHAR\n               | FLOAT CHAR DIVIDE CHAR\n\n    \n    expression : empty expression\n    '
+_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDEnonassocUMINUSCHAR DIVIDE EQUAL FLOAT ID INT LIST LPAREN MINUS NUMBER PLUS PRINT RPAREN STR TIMES _expression : LPAREN expression RPAREN\n    expression : expression PLUS expression\n               | expression MINUS expression\n               | expression TIMES expression\n               | expression DIVIDE expression\n    expression : MINUS expression %prec UMINUSexpression : NUMBER\n    string : STR\n    \n    expression : string\n    \n    char : CHAR\n    \n    expression : char\n    \n    int : INT\n    \n    float : FLOAT\n    \n    empty : _\n    \n    expression : INT expression\n    \n    expression : FLOAT expression\n    expression : PRINT expression\n    expression : INT string PLUS string\n               | INT string MINUS string\n               | INT string TIMES string\n               | INT string DIVIDE string\n    \n    expression : float string PLUS string\n               | float string MINUS string\n               | float string TIMES string\n               | float string DIVIDE string\n               \n    \n    expression : float char PLUS char\n               | float char MINUS char\n               | float char TIMES char\n               | float char DIVIDE char\n               \n    \n    expression : int char PLUS char\n               | int char MINUS char\n               | int char TIMES char\n               | int char DIVIDE char\n               \n    \n    expression : INT STR PLUS STR\n               | INT STR MINUS STR\n               | INT STR TIMES STR\n               | INT STR DIVIDE STR\n\n               | INT CHAR PLUS CHAR\n               | INT CHAR MINUS CHAR\n               | INT CHAR TIMES CHAR\n               | INT CHAR DIVIDE CHAR\n\n               | FLOAT STR PLUS STR\n               | FLOAT STR MINUS STR\n               | FLOAT STR TIMES STR\n               | FLOAT STR DIVIDE STR\n\n               | FLOAT CHAR PLUS CHAR\n               | FLOAT CHAR MINUS CHAR\n               | FLOAT CHAR TIMES CHAR\n               | FLOAT CHAR DIVIDE CHAR\n\n    expression : ID EQUAL expression\n    expression : ID\n    \n    expression : empty expression\n    '
     
-_lr_action_items = {'LPAREN':([0,2,3,7,8,9,14,15,16,17,18,19,],[2,2,2,2,2,2,2,-14,2,2,2,2,]),'MINUS':([0,1,2,3,4,5,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,],[3,17,3,3,-7,-9,-11,3,3,3,-8,-10,3,-14,3,3,3,3,17,-6,17,40,44,48,17,52,56,17,60,64,68,17,-2,-3,-4,-5,-1,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'NUMBER':([0,2,3,7,8,9,14,15,16,17,18,19,],[4,4,4,4,4,4,4,-14,4,4,4,4,]),'INT':([0,2,3,7,8,9,14,15,16,17,18,19,],[7,7,7,7,7,7,7,-14,7,7,7,7,]),'FLOAT':([0,2,3,7,8,9,14,15,16,17,18,19,],[8,8,8,8,8,8,8,-14,8,8,8,8,]),'PRINT':([0,2,3,7,8,9,14,15,16,17,18,19,],[9,9,9,9,9,9,9,-14,9,9,9,9,]),'STR':([0,2,3,7,8,9,10,14,15,16,17,18,19,39,40,41,42,43,44,45,46,51,52,53,54,59,60,61,62,],[12,12,12,24,27,12,12,12,-14,12,12,12,12,12,12,12,12,75,76,77,78,83,84,85,86,12,12,12,12,]),'CHAR':([0,2,3,7,8,9,10,11,14,15,16,17,18,19,47,48,49,50,55,56,57,58,63,64,65,66,67,68,69,70,],[13,13,13,25,28,13,13,13,13,-14,13,13,13,13,79,80,81,82,87,88,89,90,13,13,13,13,13,13,13,13,]),'_':([0,2,3,7,8,9,14,15,16,17,18,19,],[15,15,15,15,15,15,15,-14,15,15,15,15,]),'$end':([1,4,5,6,12,13,21,22,23,24,25,26,27,28,29,33,34,35,36,37,38,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,],[0,-7,-9,-11,-8,-10,-6,-15,-9,-8,-10,-16,-8,-10,-17,-50,-2,-3,-4,-5,-1,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'PLUS':([1,4,5,6,12,13,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,],[16,-7,-9,-11,-8,-10,16,-6,16,39,43,47,16,51,55,16,59,63,67,16,-2,-3,-4,-5,-1,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'TIMES':([1,4,5,6,12,13,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,],[18,-7,-9,-11,-8,-10,18,-6,18,41,45,49,18,53,57,18,61,65,69,18,18,18,-4,-5,-1,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'DIVIDE':([1,4,5,6,12,13,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,],[19,-7,-9,-11,-8,-10,19,-6,19,42,46,50,19,54,58,19,62,66,70,19,19,19,-4,-5,-1,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'RPAREN':([4,5,6,12,13,20,21,22,23,24,25,26,27,28,29,33,34,35,36,37,38,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,],[-7,-9,-11,-8,-10,38,-6,-15,-9,-8,-10,-16,-8,-10,-17,-50,-2,-3,-4,-5,-1,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),}
+_lr_action_items = {'LPAREN':([0,2,3,7,8,9,15,16,17,18,19,20,34,],[2,2,2,2,2,2,2,-14,2,2,2,2,2,]),'MINUS':([0,1,2,3,4,5,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,],[3,18,3,3,-7,-9,-11,3,3,3,-8,-10,-51,3,-14,3,3,3,3,18,-6,18,42,46,50,18,54,58,18,62,66,70,3,18,-2,-3,-4,-5,-1,18,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'NUMBER':([0,2,3,7,8,9,15,16,17,18,19,20,34,],[4,4,4,4,4,4,4,-14,4,4,4,4,4,]),'INT':([0,2,3,7,8,9,15,16,17,18,19,20,34,],[7,7,7,7,7,7,7,-14,7,7,7,7,7,]),'FLOAT':([0,2,3,7,8,9,15,16,17,18,19,20,34,],[8,8,8,8,8,8,8,-14,8,8,8,8,8,]),'PRINT':([0,2,3,7,8,9,15,16,17,18,19,20,34,],[9,9,9,9,9,9,9,-14,9,9,9,9,9,]),'ID':([0,2,3,7,8,9,15,16,17,18,19,20,34,],[14,14,14,14,14,14,14,-14,14,14,14,14,14,]),'STR':([0,2,3,7,8,9,10,15,16,17,18,19,20,34,41,42,43,44,45,46,47,48,53,54,55,56,61,62,63,64,],[12,12,12,25,28,12,12,12,-14,12,12,12,12,12,12,12,12,12,78,79,80,81,86,87,88,89,12,12,12,12,]),'CHAR':([0,2,3,7,8,9,10,11,15,16,17,18,19,20,34,49,50,51,52,57,58,59,60,65,66,67,68,69,70,71,72,],[13,13,13,26,29,13,13,13,13,-14,13,13,13,13,13,82,83,84,85,90,91,92,93,13,13,13,13,13,13,13,13,]),'_':([0,2,3,7,8,9,15,16,17,18,19,20,34,],[16,16,16,16,16,16,16,-14,16,16,16,16,16,]),'$end':([1,4,5,6,12,13,14,22,23,24,25,26,27,28,29,30,35,36,37,38,39,40,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,],[0,-7,-9,-11,-8,-10,-51,-6,-15,-9,-8,-10,-16,-8,-10,-17,-52,-2,-3,-4,-5,-1,-50,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'PLUS':([1,4,5,6,12,13,14,21,22,23,24,25,26,27,28,29,30,31,32,33,35,36,37,38,39,40,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,],[17,-7,-9,-11,-8,-10,-51,17,-6,17,41,45,49,17,53,57,17,61,65,69,17,-2,-3,-4,-5,-1,17,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'TIMES':([1,4,5,6,12,13,14,21,22,23,24,25,26,27,28,29,30,31,32,33,35,36,37,38,39,40,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,],[19,-7,-9,-11,-8,-10,-51,19,-6,19,43,47,51,19,55,59,19,63,67,71,19,19,19,-4,-5,-1,19,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'DIVIDE':([1,4,5,6,12,13,14,21,22,23,24,25,26,27,28,29,30,31,32,33,35,36,37,38,39,40,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,],[20,-7,-9,-11,-8,-10,-51,20,-6,20,44,48,52,20,56,60,20,64,68,72,20,20,20,-4,-5,-1,20,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'RPAREN':([4,5,6,12,13,14,21,22,23,24,25,26,27,28,29,30,35,36,37,38,39,40,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,],[-7,-9,-11,-8,-10,-51,40,-6,-15,-9,-8,-10,-16,-8,-10,-17,-52,-2,-3,-4,-5,-1,-50,-18,-19,-20,-21,-34,-35,-36,-37,-38,-39,-40,-41,-42,-43,-44,-45,-46,-47,-48,-49,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,]),'EQUAL':([14,],[34,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,2,3,7,8,9,14,16,17,18,19,],[1,20,21,22,26,29,33,34,35,36,37,]),'string':([0,2,3,7,8,9,10,14,16,17,18,19,39,40,41,42,59,60,61,62,],[5,5,5,23,5,5,30,5,5,5,5,5,71,72,73,74,91,92,93,94,]),'char':([0,2,3,7,8,9,10,11,14,16,17,18,19,63,64,65,66,67,68,69,70,],[6,6,6,6,6,6,31,32,6,6,6,6,6,95,96,97,98,99,100,101,102,]),'float':([0,2,3,7,8,9,14,16,17,18,19,],[10,10,10,10,10,10,10,10,10,10,10,]),'int':([0,2,3,7,8,9,14,16,17,18,19,],[11,11,11,11,11,11,11,11,11,11,11,]),'empty':([0,2,3,7,8,9,14,16,17,18,19,],[14,14,14,14,14,14,14,14,14,14,14,]),}
+_lr_goto_items = {'expression':([0,2,3,7,8,9,15,17,18,19,20,34,],[1,21,22,23,27,30,35,36,37,38,39,73,]),'string':([0,2,3,7,8,9,10,15,17,18,19,20,34,41,42,43,44,61,62,63,64,],[5,5,5,24,5,5,31,5,5,5,5,5,5,74,75,76,77,94,95,96,97,]),'char':([0,2,3,7,8,9,10,11,15,17,18,19,20,34,65,66,67,68,69,70,71,72,],[6,6,6,6,6,6,32,33,6,6,6,6,6,6,98,99,100,101,102,103,104,105,]),'float':([0,2,3,7,8,9,15,17,18,19,20,34,],[10,10,10,10,10,10,10,10,10,10,10,10,]),'int':([0,2,3,7,8,9,15,17,18,19,20,34,],[11,11,11,11,11,11,11,11,11,11,11,11,]),'empty':([0,2,3,7,8,9,15,17,18,19,20,34,],[15,15,15,15,15,15,15,15,15,15,15,15,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,54 +27,56 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> expression","S'",1,None,None,None),
-  ('expression -> LPAREN expression RPAREN','expression',3,'p_expression_group','parser.py',13),
-  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','parser.py',18),
-  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','parser.py',19),
-  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','parser.py',20),
-  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','parser.py',21),
-  ('expression -> MINUS expression','expression',2,'p_expression_uminus','parser.py',33),
-  ('expression -> NUMBER','expression',1,'p_expression_number','parser.py',37),
-  ('string -> STR','string',1,'p_string','parser.py',42),
-  ('expression -> string','expression',1,'p_string_expr','parser.py',48),
-  ('char -> CHAR','char',1,'p_char','parser.py',54),
-  ('expression -> char','expression',1,'p_char_expr','parser.py',60),
-  ('int -> INT','int',1,'p_int','parser.py',66),
-  ('float -> FLOAT','float',1,'p_float','parser.py',72),
-  ('empty -> _','empty',1,'p__','parser.py',78),
-  ('expression -> INT expression','expression',2,'p_int_expr','parser.py',85),
-  ('expression -> FLOAT expression','expression',2,'p_float_expr','parser.py',107),
-  ('expression -> PRINT expression','expression',2,'p_printstmt','parser.py',128),
-  ('expression -> INT string PLUS string','expression',4,'p_string_calculate','parser.py',140),
-  ('expression -> INT string MINUS string','expression',4,'p_string_calculate','parser.py',141),
-  ('expression -> INT string TIMES string','expression',4,'p_string_calculate','parser.py',142),
-  ('expression -> INT string DIVIDE string','expression',4,'p_string_calculate','parser.py',143),
-  ('expression -> float string PLUS string','expression',4,'p_string_float_calculate','parser.py',162),
-  ('expression -> float string MINUS string','expression',4,'p_string_float_calculate','parser.py',163),
-  ('expression -> float string TIMES string','expression',4,'p_string_float_calculate','parser.py',164),
-  ('expression -> float string DIVIDE string','expression',4,'p_string_float_calculate','parser.py',165),
-  ('expression -> float char PLUS char','expression',4,'p_char_calculate','parser.py',185),
-  ('expression -> float char MINUS char','expression',4,'p_char_calculate','parser.py',186),
-  ('expression -> float char TIMES char','expression',4,'p_char_calculate','parser.py',187),
-  ('expression -> float char DIVIDE char','expression',4,'p_char_calculate','parser.py',188),
-  ('expression -> int char PLUS char','expression',4,'p_char_integer_calculate','parser.py',208),
-  ('expression -> int char MINUS char','expression',4,'p_char_integer_calculate','parser.py',209),
-  ('expression -> int char TIMES char','expression',4,'p_char_integer_calculate','parser.py',210),
-  ('expression -> int char DIVIDE char','expression',4,'p_char_integer_calculate','parser.py',211),
-  ('expression -> INT STR PLUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',231),
-  ('expression -> INT STR MINUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',232),
-  ('expression -> INT STR TIMES STR','expression',4,'p_with_type_str_or_char_calc','parser.py',233),
-  ('expression -> INT STR DIVIDE STR','expression',4,'p_with_type_str_or_char_calc','parser.py',234),
-  ('expression -> INT CHAR PLUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',236),
-  ('expression -> INT CHAR MINUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',237),
-  ('expression -> INT CHAR TIMES CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',238),
-  ('expression -> INT CHAR DIVIDE CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',239),
-  ('expression -> FLOAT STR PLUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',241),
-  ('expression -> FLOAT STR MINUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',242),
-  ('expression -> FLOAT STR TIMES STR','expression',4,'p_with_type_str_or_char_calc','parser.py',243),
-  ('expression -> FLOAT STR DIVIDE STR','expression',4,'p_with_type_str_or_char_calc','parser.py',244),
-  ('expression -> FLOAT CHAR PLUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',246),
-  ('expression -> FLOAT CHAR MINUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',247),
-  ('expression -> FLOAT CHAR TIMES CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',248),
-  ('expression -> FLOAT CHAR DIVIDE CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',249),
-  ('expression -> empty expression','expression',2,'p_empty','parser.py',292),
+  ('expression -> LPAREN expression RPAREN','expression',3,'p_expression_group','parser.py',20),
+  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','parser.py',26),
+  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','parser.py',27),
+  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','parser.py',28),
+  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','parser.py',29),
+  ('expression -> MINUS expression','expression',2,'p_expression_uminus','parser.py',42),
+  ('expression -> NUMBER','expression',1,'p_expression_number','parser.py',47),
+  ('string -> STR','string',1,'p_string','parser.py',55),
+  ('expression -> string','expression',1,'p_string_expr','parser.py',61),
+  ('char -> CHAR','char',1,'p_char','parser.py',67),
+  ('expression -> char','expression',1,'p_char_expr','parser.py',73),
+  ('int -> INT','int',1,'p_int','parser.py',79),
+  ('float -> FLOAT','float',1,'p_float','parser.py',85),
+  ('empty -> _','empty',1,'p__','parser.py',91),
+  ('expression -> INT expression','expression',2,'p_int_expr','parser.py',100),
+  ('expression -> FLOAT expression','expression',2,'p_float_expr','parser.py',122),
+  ('expression -> PRINT expression','expression',2,'p_statement_print','parser.py',143),
+  ('expression -> INT string PLUS string','expression',4,'p_string_calculate','parser.py',151),
+  ('expression -> INT string MINUS string','expression',4,'p_string_calculate','parser.py',152),
+  ('expression -> INT string TIMES string','expression',4,'p_string_calculate','parser.py',153),
+  ('expression -> INT string DIVIDE string','expression',4,'p_string_calculate','parser.py',154),
+  ('expression -> float string PLUS string','expression',4,'p_string_float_calculate','parser.py',173),
+  ('expression -> float string MINUS string','expression',4,'p_string_float_calculate','parser.py',174),
+  ('expression -> float string TIMES string','expression',4,'p_string_float_calculate','parser.py',175),
+  ('expression -> float string DIVIDE string','expression',4,'p_string_float_calculate','parser.py',176),
+  ('expression -> float char PLUS char','expression',4,'p_char_calculate','parser.py',196),
+  ('expression -> float char MINUS char','expression',4,'p_char_calculate','parser.py',197),
+  ('expression -> float char TIMES char','expression',4,'p_char_calculate','parser.py',198),
+  ('expression -> float char DIVIDE char','expression',4,'p_char_calculate','parser.py',199),
+  ('expression -> int char PLUS char','expression',4,'p_char_integer_calculate','parser.py',219),
+  ('expression -> int char MINUS char','expression',4,'p_char_integer_calculate','parser.py',220),
+  ('expression -> int char TIMES char','expression',4,'p_char_integer_calculate','parser.py',221),
+  ('expression -> int char DIVIDE char','expression',4,'p_char_integer_calculate','parser.py',222),
+  ('expression -> INT STR PLUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',242),
+  ('expression -> INT STR MINUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',243),
+  ('expression -> INT STR TIMES STR','expression',4,'p_with_type_str_or_char_calc','parser.py',244),
+  ('expression -> INT STR DIVIDE STR','expression',4,'p_with_type_str_or_char_calc','parser.py',245),
+  ('expression -> INT CHAR PLUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',247),
+  ('expression -> INT CHAR MINUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',248),
+  ('expression -> INT CHAR TIMES CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',249),
+  ('expression -> INT CHAR DIVIDE CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',250),
+  ('expression -> FLOAT STR PLUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',252),
+  ('expression -> FLOAT STR MINUS STR','expression',4,'p_with_type_str_or_char_calc','parser.py',253),
+  ('expression -> FLOAT STR TIMES STR','expression',4,'p_with_type_str_or_char_calc','parser.py',254),
+  ('expression -> FLOAT STR DIVIDE STR','expression',4,'p_with_type_str_or_char_calc','parser.py',255),
+  ('expression -> FLOAT CHAR PLUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',257),
+  ('expression -> FLOAT CHAR MINUS CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',258),
+  ('expression -> FLOAT CHAR TIMES CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',259),
+  ('expression -> FLOAT CHAR DIVIDE CHAR','expression',4,'p_with_type_str_or_char_calc','parser.py',260),
+  ('expression -> ID EQUAL expression','expression',3,'p_var_def','parser.py',304),
+  ('expression -> ID','expression',1,'p_var_call','parser.py',312),
+  ('expression -> empty expression','expression',2,'p_empty','parser.py',322),
 ]

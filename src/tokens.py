@@ -3,6 +3,8 @@ token_list =  (
     'PLUS',
     'MINUS',
     'TIMES',
+    'EQUAL',
+    'ID',
     'DIVIDE',
     'LPAREN',
     'RPAREN',

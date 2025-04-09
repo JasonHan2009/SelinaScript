@@ -56,13 +56,17 @@ Rule 46    expression -> FLOAT CHAR PLUS CHAR
 Rule 47    expression -> FLOAT CHAR MINUS CHAR
 Rule 48    expression -> FLOAT CHAR TIMES CHAR
 Rule 49    expression -> FLOAT CHAR DIVIDE CHAR
-Rule 50    expression -> empty expression
+Rule 50    expression -> ID EQUAL expression
+Rule 51    expression -> ID
+Rule 52    expression -> empty expression
 
 Terminals, with rules where they appear
 
 CHAR                 : 10 38 38 39 39 40 40 41 41 46 46 47 47 48 48 49 49
 DIVIDE               : 5 21 25 29 33 37 41 45 49
+EQUAL                : 50
 FLOAT                : 13 16 42 43 44 45 46 47 48 49
+ID                   : 50 51
 INT                  : 12 15 18 19 20 21 34 35 36 37 38 39 40 41
 LIST                 : 
 LPAREN               : 1
@@ -79,8 +83,8 @@ error                :
 Nonterminals, with rules where they appear
 
 char                 : 11 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33
-empty                : 50
-expression           : 1 2 2 3 3 4 4 5 5 6 15 16 17 50 0
+empty                : 52
+expression           : 1 2 2 3 3 4 4 5 5 6 15 16 17 50 52 0
 float                : 22 23 24 25 26 27 28 29
 int                  : 30 31 32 33
 string               : 9 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25
@@ -134,7 +138,9 @@ state 0
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -147,16 +153,17 @@ state 0
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
     expression                     shift and go to state 1
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
 state 1
 
@@ -166,10 +173,10 @@ state 1
     (4) expression -> expression . TIMES expression
     (5) expression -> expression . DIVIDE expression
 
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 17
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
 
 state 2
@@ -219,7 +226,9 @@ state 2
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -232,16 +241,17 @@ state 2
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    expression                     shift and go to state 20
+    expression                     shift and go to state 21
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
 state 3
 
@@ -290,7 +300,9 @@ state 3
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -303,16 +315,17 @@ state 3
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    expression                     shift and go to state 21
+    expression                     shift and go to state 22
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
 state 4
 
@@ -410,7 +423,9 @@ state 7
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -418,24 +433,25 @@ state 7
     (14) empty -> . _
 
   ! shift/reduce conflict for CHAR resolved as shift
-    STR             shift and go to state 24
-    CHAR            shift and go to state 25
+    STR             shift and go to state 25
+    CHAR            shift and go to state 26
     LPAREN          shift and go to state 2
     MINUS           shift and go to state 3
     NUMBER          shift and go to state 4
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
-    _               shift and go to state 15
+    ID              shift and go to state 14
+    _               shift and go to state 16
 
   ! CHAR            [ reduce using rule 12 (int -> INT .) ]
 
-    expression                     shift and go to state 22
-    string                         shift and go to state 23
+    expression                     shift and go to state 23
+    string                         shift and go to state 24
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
 state 8
 
@@ -493,7 +509,9 @@ state 8
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -502,25 +520,26 @@ state 8
 
   ! shift/reduce conflict for STR resolved as shift
   ! shift/reduce conflict for CHAR resolved as shift
-    STR             shift and go to state 27
-    CHAR            shift and go to state 28
+    STR             shift and go to state 28
+    CHAR            shift and go to state 29
     LPAREN          shift and go to state 2
     MINUS           shift and go to state 3
     NUMBER          shift and go to state 4
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
-    _               shift and go to state 15
+    ID              shift and go to state 14
+    _               shift and go to state 16
 
   ! STR             [ reduce using rule 13 (float -> FLOAT .) ]
   ! CHAR            [ reduce using rule 13 (float -> FLOAT .) ]
 
-    expression                     shift and go to state 26
+    expression                     shift and go to state 27
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
 state 9
 
@@ -569,7 +588,9 @@ state 9
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -582,16 +603,17 @@ state 9
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    expression                     shift and go to state 29
+    expression                     shift and go to state 30
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
 state 10
 
@@ -609,8 +631,8 @@ state 10
     STR             shift and go to state 12
     CHAR            shift and go to state 13
 
-    string                         shift and go to state 30
-    char                           shift and go to state 31
+    string                         shift and go to state 31
+    char                           shift and go to state 32
 
 state 11
 
@@ -622,7 +644,7 @@ state 11
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 32
+    char                           shift and go to state 33
 
 state 12
 
@@ -650,7 +672,21 @@ state 13
 
 state 14
 
-    (50) expression -> empty . expression
+    (50) expression -> ID . EQUAL expression
+    (51) expression -> ID .
+
+    EQUAL           shift and go to state 34
+    PLUS            reduce using rule 51 (expression -> ID .)
+    MINUS           reduce using rule 51 (expression -> ID .)
+    TIMES           reduce using rule 51 (expression -> ID .)
+    DIVIDE          reduce using rule 51 (expression -> ID .)
+    $end            reduce using rule 51 (expression -> ID .)
+    RPAREN          reduce using rule 51 (expression -> ID .)
+
+
+state 15
+
+    (52) expression -> empty . expression
     (1) expression -> . LPAREN expression RPAREN
     (2) expression -> . expression PLUS expression
     (3) expression -> . expression MINUS expression
@@ -695,7 +731,9 @@ state 14
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -708,18 +746,19 @@ state 14
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    empty                          shift and go to state 14
-    expression                     shift and go to state 33
+    empty                          shift and go to state 15
+    expression                     shift and go to state 35
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
 
-state 15
+state 16
 
     (14) empty -> _ .
 
@@ -729,12 +768,13 @@ state 15
     INT             reduce using rule 14 (empty -> _ .)
     FLOAT           reduce using rule 14 (empty -> _ .)
     PRINT           reduce using rule 14 (empty -> _ .)
+    ID              reduce using rule 14 (empty -> _ .)
     STR             reduce using rule 14 (empty -> _ .)
     CHAR            reduce using rule 14 (empty -> _ .)
     _               reduce using rule 14 (empty -> _ .)
 
 
-state 16
+state 17
 
     (2) expression -> expression PLUS . expression
     (1) expression -> . LPAREN expression RPAREN
@@ -781,7 +821,9 @@ state 16
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -794,18 +836,19 @@ state 16
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    expression                     shift and go to state 34
+    expression                     shift and go to state 36
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
-state 17
+state 18
 
     (3) expression -> expression MINUS . expression
     (1) expression -> . LPAREN expression RPAREN
@@ -852,7 +895,9 @@ state 17
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -865,18 +910,19 @@ state 17
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    expression                     shift and go to state 35
+    expression                     shift and go to state 37
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
-state 18
+state 19
 
     (4) expression -> expression TIMES . expression
     (1) expression -> . LPAREN expression RPAREN
@@ -923,7 +969,9 @@ state 18
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -936,18 +984,19 @@ state 18
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    expression                     shift and go to state 36
+    expression                     shift and go to state 38
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
-state 19
+state 20
 
     (5) expression -> expression DIVIDE . expression
     (1) expression -> . LPAREN expression RPAREN
@@ -994,7 +1043,9 @@ state 19
     (47) expression -> . FLOAT CHAR MINUS CHAR
     (48) expression -> . FLOAT CHAR TIMES CHAR
     (49) expression -> . FLOAT CHAR DIVIDE CHAR
-    (50) expression -> . empty expression
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
     (8) string -> . STR
     (10) char -> . CHAR
     (13) float -> . FLOAT
@@ -1007,18 +1058,19 @@ state 19
     INT             shift and go to state 7
     FLOAT           shift and go to state 8
     PRINT           shift and go to state 9
+    ID              shift and go to state 14
     STR             shift and go to state 12
     CHAR            shift and go to state 13
-    _               shift and go to state 15
+    _               shift and go to state 16
 
-    expression                     shift and go to state 37
+    expression                     shift and go to state 39
     string                         shift and go to state 5
     char                           shift and go to state 6
     float                          shift and go to state 10
     int                            shift and go to state 11
-    empty                          shift and go to state 14
+    empty                          shift and go to state 15
 
-state 20
+state 21
 
     (1) expression -> LPAREN expression . RPAREN
     (2) expression -> expression . PLUS expression
@@ -1026,14 +1078,14 @@ state 20
     (4) expression -> expression . TIMES expression
     (5) expression -> expression . DIVIDE expression
 
-    RPAREN          shift and go to state 38
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 17
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    RPAREN          shift and go to state 40
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
 
-state 21
+state 22
 
     (6) expression -> MINUS expression .
     (2) expression -> expression . PLUS expression
@@ -1048,13 +1100,13 @@ state 21
     $end            reduce using rule 6 (expression -> MINUS expression .)
     RPAREN          reduce using rule 6 (expression -> MINUS expression .)
 
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 17 ]
-  ! TIMES           [ shift and go to state 18 ]
-  ! DIVIDE          [ shift and go to state 19 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! TIMES           [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
 
 
-state 22
+state 23
 
     (15) expression -> INT expression .
     (2) expression -> expression . PLUS expression
@@ -1068,10 +1120,10 @@ state 22
   ! shift/reduce conflict for DIVIDE resolved as shift
     $end            reduce using rule 15 (expression -> INT expression .)
     RPAREN          reduce using rule 15 (expression -> INT expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 17
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
   ! PLUS            [ reduce using rule 15 (expression -> INT expression .) ]
   ! MINUS           [ reduce using rule 15 (expression -> INT expression .) ]
@@ -1079,7 +1131,7 @@ state 22
   ! DIVIDE          [ reduce using rule 15 (expression -> INT expression .) ]
 
 
-state 23
+state 24
 
     (18) expression -> INT string . PLUS string
     (19) expression -> INT string . MINUS string
@@ -1091,10 +1143,10 @@ state 23
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
-    PLUS            shift and go to state 39
-    MINUS           shift and go to state 40
-    TIMES           shift and go to state 41
-    DIVIDE          shift and go to state 42
+    PLUS            shift and go to state 41
+    MINUS           shift and go to state 42
+    TIMES           shift and go to state 43
+    DIVIDE          shift and go to state 44
     $end            reduce using rule 9 (expression -> string .)
     RPAREN          reduce using rule 9 (expression -> string .)
 
@@ -1104,7 +1156,7 @@ state 23
   ! DIVIDE          [ reduce using rule 9 (expression -> string .) ]
 
 
-state 24
+state 25
 
     (34) expression -> INT STR . PLUS STR
     (35) expression -> INT STR . MINUS STR
@@ -1116,10 +1168,10 @@ state 24
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
-    PLUS            shift and go to state 43
-    MINUS           shift and go to state 44
-    TIMES           shift and go to state 45
-    DIVIDE          shift and go to state 46
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
     $end            reduce using rule 8 (string -> STR .)
     RPAREN          reduce using rule 8 (string -> STR .)
 
@@ -1129,7 +1181,7 @@ state 24
   ! DIVIDE          [ reduce using rule 8 (string -> STR .) ]
 
 
-state 25
+state 26
 
     (38) expression -> INT CHAR . PLUS CHAR
     (39) expression -> INT CHAR . MINUS CHAR
@@ -1141,10 +1193,10 @@ state 25
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
-    PLUS            shift and go to state 47
-    MINUS           shift and go to state 48
-    TIMES           shift and go to state 49
-    DIVIDE          shift and go to state 50
+    PLUS            shift and go to state 49
+    MINUS           shift and go to state 50
+    TIMES           shift and go to state 51
+    DIVIDE          shift and go to state 52
     $end            reduce using rule 10 (char -> CHAR .)
     RPAREN          reduce using rule 10 (char -> CHAR .)
 
@@ -1154,7 +1206,7 @@ state 25
   ! DIVIDE          [ reduce using rule 10 (char -> CHAR .) ]
 
 
-state 26
+state 27
 
     (16) expression -> FLOAT expression .
     (2) expression -> expression . PLUS expression
@@ -1168,10 +1220,10 @@ state 26
   ! shift/reduce conflict for DIVIDE resolved as shift
     $end            reduce using rule 16 (expression -> FLOAT expression .)
     RPAREN          reduce using rule 16 (expression -> FLOAT expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 17
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
   ! PLUS            [ reduce using rule 16 (expression -> FLOAT expression .) ]
   ! MINUS           [ reduce using rule 16 (expression -> FLOAT expression .) ]
@@ -1179,7 +1231,7 @@ state 26
   ! DIVIDE          [ reduce using rule 16 (expression -> FLOAT expression .) ]
 
 
-state 27
+state 28
 
     (42) expression -> FLOAT STR . PLUS STR
     (43) expression -> FLOAT STR . MINUS STR
@@ -1191,10 +1243,10 @@ state 27
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
-    PLUS            shift and go to state 51
-    MINUS           shift and go to state 52
-    TIMES           shift and go to state 53
-    DIVIDE          shift and go to state 54
+    PLUS            shift and go to state 53
+    MINUS           shift and go to state 54
+    TIMES           shift and go to state 55
+    DIVIDE          shift and go to state 56
     $end            reduce using rule 8 (string -> STR .)
     RPAREN          reduce using rule 8 (string -> STR .)
 
@@ -1204,7 +1256,7 @@ state 27
   ! DIVIDE          [ reduce using rule 8 (string -> STR .) ]
 
 
-state 28
+state 29
 
     (46) expression -> FLOAT CHAR . PLUS CHAR
     (47) expression -> FLOAT CHAR . MINUS CHAR
@@ -1216,10 +1268,10 @@ state 28
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
-    PLUS            shift and go to state 55
-    MINUS           shift and go to state 56
-    TIMES           shift and go to state 57
-    DIVIDE          shift and go to state 58
+    PLUS            shift and go to state 57
+    MINUS           shift and go to state 58
+    TIMES           shift and go to state 59
+    DIVIDE          shift and go to state 60
     $end            reduce using rule 10 (char -> CHAR .)
     RPAREN          reduce using rule 10 (char -> CHAR .)
 
@@ -1229,7 +1281,7 @@ state 28
   ! DIVIDE          [ reduce using rule 10 (char -> CHAR .) ]
 
 
-state 29
+state 30
 
     (17) expression -> PRINT expression .
     (2) expression -> expression . PLUS expression
@@ -1243,10 +1295,10 @@ state 29
   ! shift/reduce conflict for DIVIDE resolved as shift
     $end            reduce using rule 17 (expression -> PRINT expression .)
     RPAREN          reduce using rule 17 (expression -> PRINT expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 17
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
   ! PLUS            [ reduce using rule 17 (expression -> PRINT expression .) ]
   ! MINUS           [ reduce using rule 17 (expression -> PRINT expression .) ]
@@ -1254,48 +1306,122 @@ state 29
   ! DIVIDE          [ reduce using rule 17 (expression -> PRINT expression .) ]
 
 
-state 30
+state 31
 
     (22) expression -> float string . PLUS string
     (23) expression -> float string . MINUS string
     (24) expression -> float string . TIMES string
     (25) expression -> float string . DIVIDE string
 
-    PLUS            shift and go to state 59
-    MINUS           shift and go to state 60
-    TIMES           shift and go to state 61
-    DIVIDE          shift and go to state 62
+    PLUS            shift and go to state 61
+    MINUS           shift and go to state 62
+    TIMES           shift and go to state 63
+    DIVIDE          shift and go to state 64
 
 
-state 31
+state 32
 
     (26) expression -> float char . PLUS char
     (27) expression -> float char . MINUS char
     (28) expression -> float char . TIMES char
     (29) expression -> float char . DIVIDE char
 
-    PLUS            shift and go to state 63
-    MINUS           shift and go to state 64
-    TIMES           shift and go to state 65
-    DIVIDE          shift and go to state 66
+    PLUS            shift and go to state 65
+    MINUS           shift and go to state 66
+    TIMES           shift and go to state 67
+    DIVIDE          shift and go to state 68
 
 
-state 32
+state 33
 
     (30) expression -> int char . PLUS char
     (31) expression -> int char . MINUS char
     (32) expression -> int char . TIMES char
     (33) expression -> int char . DIVIDE char
 
-    PLUS            shift and go to state 67
-    MINUS           shift and go to state 68
-    TIMES           shift and go to state 69
-    DIVIDE          shift and go to state 70
+    PLUS            shift and go to state 69
+    MINUS           shift and go to state 70
+    TIMES           shift and go to state 71
+    DIVIDE          shift and go to state 72
 
 
-state 33
+state 34
 
-    (50) expression -> empty expression .
+    (50) expression -> ID EQUAL . expression
+    (1) expression -> . LPAREN expression RPAREN
+    (2) expression -> . expression PLUS expression
+    (3) expression -> . expression MINUS expression
+    (4) expression -> . expression TIMES expression
+    (5) expression -> . expression DIVIDE expression
+    (6) expression -> . MINUS expression
+    (7) expression -> . NUMBER
+    (9) expression -> . string
+    (11) expression -> . char
+    (15) expression -> . INT expression
+    (16) expression -> . FLOAT expression
+    (17) expression -> . PRINT expression
+    (18) expression -> . INT string PLUS string
+    (19) expression -> . INT string MINUS string
+    (20) expression -> . INT string TIMES string
+    (21) expression -> . INT string DIVIDE string
+    (22) expression -> . float string PLUS string
+    (23) expression -> . float string MINUS string
+    (24) expression -> . float string TIMES string
+    (25) expression -> . float string DIVIDE string
+    (26) expression -> . float char PLUS char
+    (27) expression -> . float char MINUS char
+    (28) expression -> . float char TIMES char
+    (29) expression -> . float char DIVIDE char
+    (30) expression -> . int char PLUS char
+    (31) expression -> . int char MINUS char
+    (32) expression -> . int char TIMES char
+    (33) expression -> . int char DIVIDE char
+    (34) expression -> . INT STR PLUS STR
+    (35) expression -> . INT STR MINUS STR
+    (36) expression -> . INT STR TIMES STR
+    (37) expression -> . INT STR DIVIDE STR
+    (38) expression -> . INT CHAR PLUS CHAR
+    (39) expression -> . INT CHAR MINUS CHAR
+    (40) expression -> . INT CHAR TIMES CHAR
+    (41) expression -> . INT CHAR DIVIDE CHAR
+    (42) expression -> . FLOAT STR PLUS STR
+    (43) expression -> . FLOAT STR MINUS STR
+    (44) expression -> . FLOAT STR TIMES STR
+    (45) expression -> . FLOAT STR DIVIDE STR
+    (46) expression -> . FLOAT CHAR PLUS CHAR
+    (47) expression -> . FLOAT CHAR MINUS CHAR
+    (48) expression -> . FLOAT CHAR TIMES CHAR
+    (49) expression -> . FLOAT CHAR DIVIDE CHAR
+    (50) expression -> . ID EQUAL expression
+    (51) expression -> . ID
+    (52) expression -> . empty expression
+    (8) string -> . STR
+    (10) char -> . CHAR
+    (13) float -> . FLOAT
+    (12) int -> . INT
+    (14) empty -> . _
+
+    LPAREN          shift and go to state 2
+    MINUS           shift and go to state 3
+    NUMBER          shift and go to state 4
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+    PRINT           shift and go to state 9
+    ID              shift and go to state 14
+    STR             shift and go to state 12
+    CHAR            shift and go to state 13
+    _               shift and go to state 16
+
+    expression                     shift and go to state 73
+    string                         shift and go to state 5
+    char                           shift and go to state 6
+    float                          shift and go to state 10
+    int                            shift and go to state 11
+    empty                          shift and go to state 15
+
+state 35
+
+    (52) expression -> empty expression .
     (2) expression -> expression . PLUS expression
     (3) expression -> expression . MINUS expression
     (4) expression -> expression . TIMES expression
@@ -1305,20 +1431,20 @@ state 33
   ! shift/reduce conflict for MINUS resolved as shift
   ! shift/reduce conflict for TIMES resolved as shift
   ! shift/reduce conflict for DIVIDE resolved as shift
-    $end            reduce using rule 50 (expression -> empty expression .)
-    RPAREN          reduce using rule 50 (expression -> empty expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 17
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    $end            reduce using rule 52 (expression -> empty expression .)
+    RPAREN          reduce using rule 52 (expression -> empty expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
-  ! PLUS            [ reduce using rule 50 (expression -> empty expression .) ]
-  ! MINUS           [ reduce using rule 50 (expression -> empty expression .) ]
-  ! TIMES           [ reduce using rule 50 (expression -> empty expression .) ]
-  ! DIVIDE          [ reduce using rule 50 (expression -> empty expression .) ]
+  ! PLUS            [ reduce using rule 52 (expression -> empty expression .) ]
+  ! MINUS           [ reduce using rule 52 (expression -> empty expression .) ]
+  ! TIMES           [ reduce using rule 52 (expression -> empty expression .) ]
+  ! DIVIDE          [ reduce using rule 52 (expression -> empty expression .) ]
 
 
-state 34
+state 36
 
     (2) expression -> expression PLUS expression .
     (2) expression -> expression . PLUS expression
@@ -1330,16 +1456,16 @@ state 34
     MINUS           reduce using rule 2 (expression -> expression PLUS expression .)
     $end            reduce using rule 2 (expression -> expression PLUS expression .)
     RPAREN          reduce using rule 2 (expression -> expression PLUS expression .)
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
   ! TIMES           [ reduce using rule 2 (expression -> expression PLUS expression .) ]
   ! DIVIDE          [ reduce using rule 2 (expression -> expression PLUS expression .) ]
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 17 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
 
 
-state 35
+state 37
 
     (3) expression -> expression MINUS expression .
     (2) expression -> expression . PLUS expression
@@ -1351,16 +1477,16 @@ state 35
     MINUS           reduce using rule 3 (expression -> expression MINUS expression .)
     $end            reduce using rule 3 (expression -> expression MINUS expression .)
     RPAREN          reduce using rule 3 (expression -> expression MINUS expression .)
-    TIMES           shift and go to state 18
-    DIVIDE          shift and go to state 19
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
 
   ! TIMES           [ reduce using rule 3 (expression -> expression MINUS expression .) ]
   ! DIVIDE          [ reduce using rule 3 (expression -> expression MINUS expression .) ]
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 17 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
 
 
-state 36
+state 38
 
     (4) expression -> expression TIMES expression .
     (2) expression -> expression . PLUS expression
@@ -1375,13 +1501,13 @@ state 36
     $end            reduce using rule 4 (expression -> expression TIMES expression .)
     RPAREN          reduce using rule 4 (expression -> expression TIMES expression .)
 
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 17 ]
-  ! TIMES           [ shift and go to state 18 ]
-  ! DIVIDE          [ shift and go to state 19 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! TIMES           [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
 
 
-state 37
+state 39
 
     (5) expression -> expression DIVIDE expression .
     (2) expression -> expression . PLUS expression
@@ -1396,13 +1522,13 @@ state 37
     $end            reduce using rule 5 (expression -> expression DIVIDE expression .)
     RPAREN          reduce using rule 5 (expression -> expression DIVIDE expression .)
 
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 17 ]
-  ! TIMES           [ shift and go to state 18 ]
-  ! DIVIDE          [ shift and go to state 19 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! TIMES           [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
 
 
-state 38
+state 40
 
     (1) expression -> LPAREN expression RPAREN .
 
@@ -1414,263 +1540,288 @@ state 38
     RPAREN          reduce using rule 1 (expression -> LPAREN expression RPAREN .)
 
 
-state 39
+state 41
 
     (18) expression -> INT string PLUS . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 71
+    string                         shift and go to state 74
 
-state 40
+state 42
 
     (19) expression -> INT string MINUS . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 72
+    string                         shift and go to state 75
 
-state 41
+state 43
 
     (20) expression -> INT string TIMES . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 73
+    string                         shift and go to state 76
 
-state 42
+state 44
 
     (21) expression -> INT string DIVIDE . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 74
-
-state 43
-
-    (34) expression -> INT STR PLUS . STR
-
-    STR             shift and go to state 75
-
-
-state 44
-
-    (35) expression -> INT STR MINUS . STR
-
-    STR             shift and go to state 76
-
+    string                         shift and go to state 77
 
 state 45
 
-    (36) expression -> INT STR TIMES . STR
-
-    STR             shift and go to state 77
-
-
-state 46
-
-    (37) expression -> INT STR DIVIDE . STR
+    (34) expression -> INT STR PLUS . STR
 
     STR             shift and go to state 78
 
 
+state 46
+
+    (35) expression -> INT STR MINUS . STR
+
+    STR             shift and go to state 79
+
+
 state 47
 
-    (38) expression -> INT CHAR PLUS . CHAR
+    (36) expression -> INT STR TIMES . STR
 
-    CHAR            shift and go to state 79
+    STR             shift and go to state 80
 
 
 state 48
 
-    (39) expression -> INT CHAR MINUS . CHAR
+    (37) expression -> INT STR DIVIDE . STR
 
-    CHAR            shift and go to state 80
+    STR             shift and go to state 81
 
 
 state 49
 
-    (40) expression -> INT CHAR TIMES . CHAR
-
-    CHAR            shift and go to state 81
-
-
-state 50
-
-    (41) expression -> INT CHAR DIVIDE . CHAR
+    (38) expression -> INT CHAR PLUS . CHAR
 
     CHAR            shift and go to state 82
 
 
+state 50
+
+    (39) expression -> INT CHAR MINUS . CHAR
+
+    CHAR            shift and go to state 83
+
+
 state 51
 
-    (42) expression -> FLOAT STR PLUS . STR
+    (40) expression -> INT CHAR TIMES . CHAR
 
-    STR             shift and go to state 83
+    CHAR            shift and go to state 84
 
 
 state 52
 
-    (43) expression -> FLOAT STR MINUS . STR
+    (41) expression -> INT CHAR DIVIDE . CHAR
 
-    STR             shift and go to state 84
+    CHAR            shift and go to state 85
 
 
 state 53
 
-    (44) expression -> FLOAT STR TIMES . STR
-
-    STR             shift and go to state 85
-
-
-state 54
-
-    (45) expression -> FLOAT STR DIVIDE . STR
+    (42) expression -> FLOAT STR PLUS . STR
 
     STR             shift and go to state 86
 
 
+state 54
+
+    (43) expression -> FLOAT STR MINUS . STR
+
+    STR             shift and go to state 87
+
+
 state 55
 
-    (46) expression -> FLOAT CHAR PLUS . CHAR
+    (44) expression -> FLOAT STR TIMES . STR
 
-    CHAR            shift and go to state 87
+    STR             shift and go to state 88
 
 
 state 56
 
-    (47) expression -> FLOAT CHAR MINUS . CHAR
+    (45) expression -> FLOAT STR DIVIDE . STR
 
-    CHAR            shift and go to state 88
+    STR             shift and go to state 89
 
 
 state 57
 
-    (48) expression -> FLOAT CHAR TIMES . CHAR
-
-    CHAR            shift and go to state 89
-
-
-state 58
-
-    (49) expression -> FLOAT CHAR DIVIDE . CHAR
+    (46) expression -> FLOAT CHAR PLUS . CHAR
 
     CHAR            shift and go to state 90
 
 
+state 58
+
+    (47) expression -> FLOAT CHAR MINUS . CHAR
+
+    CHAR            shift and go to state 91
+
+
 state 59
+
+    (48) expression -> FLOAT CHAR TIMES . CHAR
+
+    CHAR            shift and go to state 92
+
+
+state 60
+
+    (49) expression -> FLOAT CHAR DIVIDE . CHAR
+
+    CHAR            shift and go to state 93
+
+
+state 61
 
     (22) expression -> float string PLUS . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 91
+    string                         shift and go to state 94
 
-state 60
+state 62
 
     (23) expression -> float string MINUS . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 92
+    string                         shift and go to state 95
 
-state 61
+state 63
 
     (24) expression -> float string TIMES . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 93
+    string                         shift and go to state 96
 
-state 62
+state 64
 
     (25) expression -> float string DIVIDE . string
     (8) string -> . STR
 
     STR             shift and go to state 12
 
-    string                         shift and go to state 94
+    string                         shift and go to state 97
 
-state 63
+state 65
 
     (26) expression -> float char PLUS . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 95
+    char                           shift and go to state 98
 
-state 64
+state 66
 
     (27) expression -> float char MINUS . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 96
+    char                           shift and go to state 99
 
-state 65
+state 67
 
     (28) expression -> float char TIMES . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 97
+    char                           shift and go to state 100
 
-state 66
+state 68
 
     (29) expression -> float char DIVIDE . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 98
+    char                           shift and go to state 101
 
-state 67
+state 69
 
     (30) expression -> int char PLUS . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 99
+    char                           shift and go to state 102
 
-state 68
+state 70
 
     (31) expression -> int char MINUS . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 100
+    char                           shift and go to state 103
 
-state 69
+state 71
 
     (32) expression -> int char TIMES . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 101
+    char                           shift and go to state 104
 
-state 70
+state 72
 
     (33) expression -> int char DIVIDE . char
     (10) char -> . CHAR
 
     CHAR            shift and go to state 13
 
-    char                           shift and go to state 102
+    char                           shift and go to state 105
 
-state 71
+state 73
+
+    (50) expression -> ID EQUAL expression .
+    (2) expression -> expression . PLUS expression
+    (3) expression -> expression . MINUS expression
+    (4) expression -> expression . TIMES expression
+    (5) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    $end            reduce using rule 50 (expression -> ID EQUAL expression .)
+    RPAREN          reduce using rule 50 (expression -> ID EQUAL expression .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    TIMES           shift and go to state 19
+    DIVIDE          shift and go to state 20
+
+  ! PLUS            [ reduce using rule 50 (expression -> ID EQUAL expression .) ]
+  ! MINUS           [ reduce using rule 50 (expression -> ID EQUAL expression .) ]
+  ! TIMES           [ reduce using rule 50 (expression -> ID EQUAL expression .) ]
+  ! DIVIDE          [ reduce using rule 50 (expression -> ID EQUAL expression .) ]
+
+
+state 74
 
     (18) expression -> INT string PLUS string .
 
@@ -1682,7 +1833,7 @@ state 71
     RPAREN          reduce using rule 18 (expression -> INT string PLUS string .)
 
 
-state 72
+state 75
 
     (19) expression -> INT string MINUS string .
 
@@ -1694,7 +1845,7 @@ state 72
     RPAREN          reduce using rule 19 (expression -> INT string MINUS string .)
 
 
-state 73
+state 76
 
     (20) expression -> INT string TIMES string .
 
@@ -1706,7 +1857,7 @@ state 73
     RPAREN          reduce using rule 20 (expression -> INT string TIMES string .)
 
 
-state 74
+state 77
 
     (21) expression -> INT string DIVIDE string .
 
@@ -1718,7 +1869,7 @@ state 74
     RPAREN          reduce using rule 21 (expression -> INT string DIVIDE string .)
 
 
-state 75
+state 78
 
     (34) expression -> INT STR PLUS STR .
 
@@ -1730,7 +1881,7 @@ state 75
     RPAREN          reduce using rule 34 (expression -> INT STR PLUS STR .)
 
 
-state 76
+state 79
 
     (35) expression -> INT STR MINUS STR .
 
@@ -1742,7 +1893,7 @@ state 76
     RPAREN          reduce using rule 35 (expression -> INT STR MINUS STR .)
 
 
-state 77
+state 80
 
     (36) expression -> INT STR TIMES STR .
 
@@ -1754,7 +1905,7 @@ state 77
     RPAREN          reduce using rule 36 (expression -> INT STR TIMES STR .)
 
 
-state 78
+state 81
 
     (37) expression -> INT STR DIVIDE STR .
 
@@ -1766,7 +1917,7 @@ state 78
     RPAREN          reduce using rule 37 (expression -> INT STR DIVIDE STR .)
 
 
-state 79
+state 82
 
     (38) expression -> INT CHAR PLUS CHAR .
 
@@ -1778,7 +1929,7 @@ state 79
     RPAREN          reduce using rule 38 (expression -> INT CHAR PLUS CHAR .)
 
 
-state 80
+state 83
 
     (39) expression -> INT CHAR MINUS CHAR .
 
@@ -1790,7 +1941,7 @@ state 80
     RPAREN          reduce using rule 39 (expression -> INT CHAR MINUS CHAR .)
 
 
-state 81
+state 84
 
     (40) expression -> INT CHAR TIMES CHAR .
 
@@ -1802,7 +1953,7 @@ state 81
     RPAREN          reduce using rule 40 (expression -> INT CHAR TIMES CHAR .)
 
 
-state 82
+state 85
 
     (41) expression -> INT CHAR DIVIDE CHAR .
 
@@ -1814,7 +1965,7 @@ state 82
     RPAREN          reduce using rule 41 (expression -> INT CHAR DIVIDE CHAR .)
 
 
-state 83
+state 86
 
     (42) expression -> FLOAT STR PLUS STR .
 
@@ -1826,7 +1977,7 @@ state 83
     RPAREN          reduce using rule 42 (expression -> FLOAT STR PLUS STR .)
 
 
-state 84
+state 87
 
     (43) expression -> FLOAT STR MINUS STR .
 
@@ -1838,7 +1989,7 @@ state 84
     RPAREN          reduce using rule 43 (expression -> FLOAT STR MINUS STR .)
 
 
-state 85
+state 88
 
     (44) expression -> FLOAT STR TIMES STR .
 
@@ -1850,7 +2001,7 @@ state 85
     RPAREN          reduce using rule 44 (expression -> FLOAT STR TIMES STR .)
 
 
-state 86
+state 89
 
     (45) expression -> FLOAT STR DIVIDE STR .
 
@@ -1862,7 +2013,7 @@ state 86
     RPAREN          reduce using rule 45 (expression -> FLOAT STR DIVIDE STR .)
 
 
-state 87
+state 90
 
     (46) expression -> FLOAT CHAR PLUS CHAR .
 
@@ -1874,7 +2025,7 @@ state 87
     RPAREN          reduce using rule 46 (expression -> FLOAT CHAR PLUS CHAR .)
 
 
-state 88
+state 91
 
     (47) expression -> FLOAT CHAR MINUS CHAR .
 
@@ -1886,7 +2037,7 @@ state 88
     RPAREN          reduce using rule 47 (expression -> FLOAT CHAR MINUS CHAR .)
 
 
-state 89
+state 92
 
     (48) expression -> FLOAT CHAR TIMES CHAR .
 
@@ -1898,7 +2049,7 @@ state 89
     RPAREN          reduce using rule 48 (expression -> FLOAT CHAR TIMES CHAR .)
 
 
-state 90
+state 93
 
     (49) expression -> FLOAT CHAR DIVIDE CHAR .
 
@@ -1910,7 +2061,7 @@ state 90
     RPAREN          reduce using rule 49 (expression -> FLOAT CHAR DIVIDE CHAR .)
 
 
-state 91
+state 94
 
     (22) expression -> float string PLUS string .
 
@@ -1922,7 +2073,7 @@ state 91
     RPAREN          reduce using rule 22 (expression -> float string PLUS string .)
 
 
-state 92
+state 95
 
     (23) expression -> float string MINUS string .
 
@@ -1934,7 +2085,7 @@ state 92
     RPAREN          reduce using rule 23 (expression -> float string MINUS string .)
 
 
-state 93
+state 96
 
     (24) expression -> float string TIMES string .
 
@@ -1946,7 +2097,7 @@ state 93
     RPAREN          reduce using rule 24 (expression -> float string TIMES string .)
 
 
-state 94
+state 97
 
     (25) expression -> float string DIVIDE string .
 
@@ -1958,7 +2109,7 @@ state 94
     RPAREN          reduce using rule 25 (expression -> float string DIVIDE string .)
 
 
-state 95
+state 98
 
     (26) expression -> float char PLUS char .
 
@@ -1970,7 +2121,7 @@ state 95
     RPAREN          reduce using rule 26 (expression -> float char PLUS char .)
 
 
-state 96
+state 99
 
     (27) expression -> float char MINUS char .
 
@@ -1982,7 +2133,7 @@ state 96
     RPAREN          reduce using rule 27 (expression -> float char MINUS char .)
 
 
-state 97
+state 100
 
     (28) expression -> float char TIMES char .
 
@@ -1994,7 +2145,7 @@ state 97
     RPAREN          reduce using rule 28 (expression -> float char TIMES char .)
 
 
-state 98
+state 101
 
     (29) expression -> float char DIVIDE char .
 
@@ -2006,7 +2157,7 @@ state 98
     RPAREN          reduce using rule 29 (expression -> float char DIVIDE char .)
 
 
-state 99
+state 102
 
     (30) expression -> int char PLUS char .
 
@@ -2018,7 +2169,7 @@ state 99
     RPAREN          reduce using rule 30 (expression -> int char PLUS char .)
 
 
-state 100
+state 103
 
     (31) expression -> int char MINUS char .
 
@@ -2030,7 +2181,7 @@ state 100
     RPAREN          reduce using rule 31 (expression -> int char MINUS char .)
 
 
-state 101
+state 104
 
     (32) expression -> int char TIMES char .
 
@@ -2042,7 +2193,7 @@ state 101
     RPAREN          reduce using rule 32 (expression -> int char TIMES char .)
 
 
-state 102
+state 105
 
     (33) expression -> int char DIVIDE char .
 
@@ -2059,10 +2210,6 @@ WARNING:
 WARNING: shift/reduce conflict for CHAR in state 7 resolved as shift
 WARNING: shift/reduce conflict for STR in state 8 resolved as shift
 WARNING: shift/reduce conflict for CHAR in state 8 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 22 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 22 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 22 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 22 resolved as shift
 WARNING: shift/reduce conflict for PLUS in state 23 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 23 resolved as shift
 WARNING: shift/reduce conflict for TIMES in state 23 resolved as shift
@@ -2091,7 +2238,15 @@ WARNING: shift/reduce conflict for PLUS in state 29 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 29 resolved as shift
 WARNING: shift/reduce conflict for TIMES in state 29 resolved as shift
 WARNING: shift/reduce conflict for DIVIDE in state 29 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 33 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 33 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 33 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 33 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 30 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 30 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 35 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 35 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 35 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 73 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 73 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 73 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 73 resolved as shift
